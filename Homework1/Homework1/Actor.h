@@ -12,6 +12,7 @@
 namespace Engine
 {
 	class Component;
+	class World;
 
 	class Actor : public ObjectBase
 	{
@@ -29,8 +30,10 @@ namespace Engine
 		// ----------------------------------------------------------------------
 
 		Actor* getOwner();
+		World* getWorld();
 
 		void setOwner(Actor* owner);
+		void setWorld(World* world);
 
 		// ----------------------------------------------------------------------
 		// Child Function
@@ -70,6 +73,7 @@ namespace Engine
 		// ----------------------------------------------------------------------
 
 		Actor* m_owner;
+		World* m_world;
 
 		std::unordered_map<std::string, Actor*> m_children;
 		std::unordered_map<std::string, Component*> m_components;

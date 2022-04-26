@@ -1,6 +1,7 @@
 #include <string>
 
-#include "BasicTypes.h"
+#include "Engine.h"
+#include "World.h"
 #include "Actor.h"
 #include "Component.h"
 #include "SceneComponent.h"
@@ -13,15 +14,29 @@ namespace Engine
 {
 	Actor::Actor(Actor* owner, const std::string& name) : ObjectBase(name)
 	{
-		m_owner = owner;
+		setOwner(owner);
+		if (owner != nullptr)
+		{
+			setWorld(owner->getWorld());
+		}
+		else
+		{
+			World* world = Engine::getInstance()->getWorld();
+
+			setWorld(world);
+		}
+
+		World* world = getWorld();
+		world->addActor(this);
 
 		SceneComponent* sceneComponent = new SceneComponent(this, "Transform");
-
 		addComponent(sceneComponent);
 	}
 
 	Actor::~Actor()
 	{
+		getWorld()->removeActor(this);
+
 		deleteChildren();
 		deleteComponents();
 	}
@@ -35,9 +50,19 @@ namespace Engine
 		return m_owner;
 	}
 
+	World* Actor::getWorld()
+	{
+		return m_world;
+	}
+
 	void Actor::setOwner(Actor* owner)
 	{
 		m_owner = owner;
+	}
+
+	void Actor::setWorld(World* world)
+	{
+		m_world = world;
 	}
 
 	// ----------------------------------------------------------------------
@@ -280,7 +305,9 @@ namespace Engine
 			return;
 		}
 
-		this->m_components[componentId] = component;
+		m_components[componentId] = component;
+
+		getWorld()->registerComponent(component);
 	}
 
 	void Actor::removeComponent(Component* component)
@@ -291,7 +318,9 @@ namespace Engine
 			return;
 		}
 
-		this->m_components.erase(componentId);
+		getWorld()->unRegisterComponent(component);
+
+		m_components.erase(componentId);		
 	}
 
 	void Actor::clearComponents()
