@@ -13,38 +13,15 @@ namespace Engine
 		// Constructor, Destructor
 		// ----------------------------------------------------------------------
 
-		inline Plane(float x, float y, float z, float w)
-		{
-			setX(x);
-			setY(y);
-			setZ(z);
-			setW(w);
-		}
-
-		inline Plane(const Vector4& other)
-		{
-			xmStore(other);
-		}
-
-		inline Plane(const Plane& other)
-		{
-			xmStore(other);
-		}
+		Plane(float x = 0.0f, float y = 0.0f, float z = 0.0f, float w = 0.0f);
+		Plane(const Vector4& other);
+		Plane(const Plane& other);
 
 		// ----------------------------------------------------------------------
 		// Public Member Method
 		// ----------------------------------------------------------------------
 
-		inline bool intersectTriangle(const Vector3& v1, const Vector3& v2, const Vector3& v3) const
-		{
-			return TriangleTests::Intersects(v1.xmLoad(), v2.xmLoad(), v3.xmLoad(), xmLoad()) == PlaneIntersectionType::INTERSECTING;
-		}
-
-		inline bool intersectPlane(const Plane& p) const
-		{
-			XMVECTOR linePoint1, linePoint2;
-
-			XMPlaneIntersectPlane(&linePoint1, &linePoint2, xmLoad(), p.xmLoad());
-		}
+		bool intersectTriangle(const Vector3& v1, const Vector3& v2, const Vector3& v3) const;
+		bool intersectPlane(const Plane& p) const;
 	};
 }

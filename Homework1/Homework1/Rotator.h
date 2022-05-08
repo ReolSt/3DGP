@@ -11,63 +11,23 @@ namespace Engine
 		// Constructor, Destructor
 		// ----------------------------------------------------------------------
 
-		inline Rotator(float yaw, float pitch, float roll)
-		{
-			setYaw(yaw);
-			setPitch(pitch);
-			setRoll(roll);
-		}
-
-		inline Rotator(const Rotator& r)
-		{
-			setYaw(r.getYaw());
-			setPitch(r.getPitch());
-			setRoll(r.getRoll());
-		}
+		Rotator(float yaw = 0.0f, float pitch = 0.0f, float roll = 0.0f);
+		Rotator(const Rotator& r);
 
 		// ----------------------------------------------------------------------
 		// Getter, Setter
 		// ----------------------------------------------------------------------
 
-		const XMFLOAT3* getDXVector() const
-		{
-			return &m_dxVector;
-		}
+		const XMFLOAT3* getDXVector() const;
+		XMFLOAT3* getDXVectorUnsafe();
 
-		XMFLOAT3* getDXVectorUnsafe()
-		{
-			return &m_dxVector;
-		}
+		float getYaw() const;
+		float getPitch() const;
+		float getRoll() const;
 
-		float getYaw() const
-		{
-			return m_dxVector.x;
-		}
-
-		float getPitch() const
-		{
-			return m_dxVector.y;
-		}
-
-		float getRoll() const
-		{
-			return m_dxVector.z;
-		}
-
-		void setYaw(float yaw)
-		{
-			m_dxVector.x = yaw;
-		}
-
-		void setPitch(float pitch)
-		{
-			m_dxVector.y = pitch;
-		}
-
-		void setRoll(float roll)
-		{
-			m_dxVector.z = roll;
-		}
+		void setYaw(float yaw);
+		void setPitch(float pitch);
+		void setRoll(float roll);
 
 	private:
 		// ----------------------------------------------------------------------
