@@ -1,72 +1,74 @@
-#include "Event.h"
+#include "SystemEvent.h"
 
 #include <cassert>
 #include <string>
 #include <unordered_map>
 
+#include "Alias.h"
+
 namespace Engine
 {
-	bool __isWindowEvent(EventType eventType)
+	bool __isWindowEvent(SystemEventType eventType)
 	{
-		return eventType == EventType::WindowMove ||
-			eventType == EventType::WindowResize;
+		return eventType == SystemEventType::WindowMove ||
+			eventType == SystemEventType::WindowResize;
 	}
 
-	bool __isKeyEvent(EventType eventType)
+	bool __isKeyEvent(SystemEventType eventType)
 	{
-		return eventType == EventType::KeyDown ||
-			eventType == EventType::KeyUp;
+		return eventType == SystemEventType::KeyDown ||
+			eventType == SystemEventType::KeyUp;
 	}
 
-	bool __isMouseEvent(EventType eventType)
+	bool __isMouseEvent(SystemEventType eventType)
 	{
-		return eventType == EventType::MouseDown ||
-			eventType == EventType::MouseUp ||
-			eventType == EventType::MouseWheel ||
-			eventType == EventType::MouseMove ||
-			eventType == EventType::MouseHover ||
-			eventType == EventType::MouseLeave;
+		return eventType == SystemEventType::MouseDown ||
+			eventType == SystemEventType::MouseUp ||
+			eventType == SystemEventType::MouseWheel ||
+			eventType == SystemEventType::MouseMove ||
+			eventType == SystemEventType::MouseHover ||
+			eventType == SystemEventType::MouseLeave;
 	}
 
-	std::string GetStringFromEventType(EventType eventType)
+	std::string GetStringFromEventType(SystemEventType eventType)
 	{
-		static std::unordered_map<EventType, std::string> eventTypeToString;
+		static std::unordered_map<SystemEventType, std::string> eventTypeToString;
 
 		if (eventTypeToString.size() == 0)
 		{
-			eventTypeToString[EventType::None] = "None";
-			eventTypeToString[EventType::WindowMove] = "WindowMove";
-			eventTypeToString[EventType::WindowResize] = "WindowResize";
-			eventTypeToString[EventType::MouseDown] = "MouseDown";
-			eventTypeToString[EventType::MouseUp] = "MouseUp";
-			eventTypeToString[EventType::MouseMove] = "MouseMove";
-			eventTypeToString[EventType::MouseWheel] = "MouseWheel";
-			eventTypeToString[EventType::MouseHover] = "MouseHover";
-			eventTypeToString[EventType::MouseLeave] = "MouseLeave";
-			eventTypeToString[EventType::KeyDown] = "KeyDown";
-			eventTypeToString[EventType::KeyUp] = "KeyUp";
+			eventTypeToString[SystemEventType::None] = "None";
+			eventTypeToString[SystemEventType::WindowMove] = "WindowMove";
+			eventTypeToString[SystemEventType::WindowResize] = "WindowResize";
+			eventTypeToString[SystemEventType::MouseDown] = "MouseDown";
+			eventTypeToString[SystemEventType::MouseUp] = "MouseUp";
+			eventTypeToString[SystemEventType::MouseMove] = "MouseMove";
+			eventTypeToString[SystemEventType::MouseWheel] = "MouseWheel";
+			eventTypeToString[SystemEventType::MouseHover] = "MouseHover";
+			eventTypeToString[SystemEventType::MouseLeave] = "MouseLeave";
+			eventTypeToString[SystemEventType::KeyDown] = "KeyDown";
+			eventTypeToString[SystemEventType::KeyUp] = "KeyUp";
 		}
 
 		return eventTypeToString[eventType];
 	}
 
-	EventType GetEventTypeFromString(const std::string& str)
+	SystemEventType GetEventTypeFromString(const std::string& str)
 	{
-		static std::unordered_map<std::string, EventType> stringToEventType;
+		static std::unordered_map<std::string, SystemEventType> stringToEventType;
 
 		if (stringToEventType.size() == 0)
 		{
-			stringToEventType["None"] = EventType::None;
-			stringToEventType["Move"] = EventType::WindowMove;
-			stringToEventType["Resize"] = EventType::WindowResize;
-			stringToEventType["MouseDown"] = EventType::MouseDown;
-			stringToEventType["MouseUp"] = EventType::MouseUp;
-			stringToEventType["MouseMove"] = EventType::MouseMove;
-			stringToEventType["MouseWheel"] = EventType::MouseWheel;
-			stringToEventType["MouseHover"] = EventType::MouseHover;
-			stringToEventType["MouseLeave"] = EventType::MouseLeave;
-			stringToEventType["KeyDown"] = EventType::KeyDown;
-			stringToEventType["KeyUp"] = EventType::KeyUp;
+			stringToEventType["None"] = SystemEventType::None;
+			stringToEventType["Move"] = SystemEventType::WindowMove;
+			stringToEventType["Resize"] = SystemEventType::WindowResize;
+			stringToEventType["MouseDown"] = SystemEventType::MouseDown;
+			stringToEventType["MouseUp"] = SystemEventType::MouseUp;
+			stringToEventType["MouseMove"] = SystemEventType::MouseMove;
+			stringToEventType["MouseWheel"] = SystemEventType::MouseWheel;
+			stringToEventType["MouseHover"] = SystemEventType::MouseHover;
+			stringToEventType["MouseLeave"] = SystemEventType::MouseLeave;
+			stringToEventType["KeyDown"] = SystemEventType::KeyDown;
+			stringToEventType["KeyUp"] = SystemEventType::KeyUp;
 		}
 
 		return stringToEventType[str];
@@ -367,24 +369,24 @@ namespace Engine
 			button == KeyCode::ThumbMouseButton2;
 	}
 
-	WindowEvent::WindowEvent(EventType eventType, int x, int y, int width, int height)
-		: Event(eventType), m_x(x), m_y(y), m_width(width), m_height(height)
+	WindowEvent::WindowEvent(SystemEventType eventType, int x, int y, int width, int height)
+		: SystemEvent(eventType), m_x(x), m_y(y), m_width(width), m_height(height)
 	{
 		assert(__isWindowEvent(eventType));
 	}
 
 
-	KeyEvent::KeyEvent(EventType eventType, KeyCode keyCode)
-		: Event(eventType), m_keyCode(keyCode)
+	KeyEvent::KeyEvent(SystemEventType eventType, KeyCode keyCode)
+		: SystemEvent(eventType), m_keyCode(keyCode)
 	{
-		assert(__isKeyEvent(eventType) || eventType == EventType::None);
+		assert(__isKeyEvent(eventType) || eventType == SystemEventType::None);
 		assert(__isKeyCode(keyCode) || keyCode == KeyCode::None);
 	}
 
-	MouseEvent::MouseEvent(EventType eventType, const std::vector<KeyCode>& buttons, int x, int y, int wheelDelta)
-		: Event(eventType), m_buttons(buttons), m_x(x), m_y(y), m_wheelDelta(wheelDelta)
+	MouseEvent::MouseEvent(SystemEventType eventType, const Array<KeyCode>& buttons, int x, int y, int wheelDelta)
+		: SystemEvent(eventType), m_buttons(buttons), m_x(x), m_y(y), m_wheelDelta(wheelDelta)
 	{
-		assert(__isMouseEvent(eventType) || eventType == EventType::None);
+		assert(__isMouseEvent(eventType) || eventType == SystemEventType::None);
 		for (KeyCode button : buttons)
 		{
 			assert(__isMouseButtonCode(button) || button == KeyCode::None);
