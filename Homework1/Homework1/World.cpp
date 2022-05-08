@@ -3,6 +3,7 @@
 #include "Component.h"
 
 #include <utility>
+#include <iostream>
 
 namespace Engine
 {
@@ -14,7 +15,7 @@ namespace Engine
     {
     }
 
-    Actor* World::getActorById(const std::string& id)
+    Actor* World::getActorById(const String& id)
     {
         for (auto pair : m_actors)
         {
@@ -28,9 +29,9 @@ namespace Engine
         return nullptr;
     }
 
-    std::vector<Actor*>&& World::getActorsByTypeId(size_t typeId)
+    Array<Actor*>&& World::getActorsByTypeId(UInt64 typeId)
     {
-        std::vector<Actor*> container;
+        Array<Actor*> container;
 
         for (auto pair : m_actors)
         {
@@ -44,9 +45,9 @@ namespace Engine
         return std::move(container);
     }
 
-    std::vector<Actor*>&& World::getActorsByTypeName(const std::string& typeName)
+    Array<Actor*>&& World::getActorsByTypeName(const String& typeName)
     {
-        std::vector<Actor*> container;
+        Array<Actor*> container;
 
         for (auto pair : m_actors)
         {
@@ -64,7 +65,7 @@ namespace Engine
     {
         assert(actor != nullptr);
 
-        std::string actorId = actor->getId();
+        String actorId = actor->getId();
         m_actors[actorId] = actor;
     }
 
@@ -72,11 +73,11 @@ namespace Engine
     {
         assert(actor != nullptr);
 
-        std::string actorId = actor->getId();
+        String actorId = actor->getId();
         m_actors.erase(actorId);
     }
 
-    Component* World::getRegisteredComponentById(const std::string& id)
+    Component* World::getRegisteredComponentById(const String& id)
     {
         for (const auto& pair : m_registeredComponents)
         {
@@ -90,9 +91,9 @@ namespace Engine
         return nullptr;
     }
 
-    std::vector<Component*>&& World::getRegisteredComponentsByTypeId(size_t typeId)
+    Array<Component*>&& World::getRegisteredComponentsByTypeId(UInt64 typeId)
     {
-        std::vector<Component*> container;
+        Array<Component*> container;
 
         for (const auto& pair : m_registeredComponents)
         {
@@ -106,9 +107,9 @@ namespace Engine
         return std::move(container);
     }
 
-    std::vector<Component*>&& World::getRegisteredComponentsByTypeName(const std::string& typeName)
+    Array<Component*>&& World::getRegisteredComponentsByTypeName(const String& typeName)
     {
-        std::vector<Component*> container;
+        Array<Component*> container;
 
         for (const auto& pair : m_registeredComponents)
         {
@@ -126,7 +127,7 @@ namespace Engine
     {
         assert(component != nullptr);
 
-        std::string componentId = component->getId();
+        String componentId = component->getId();
         m_registeredComponents[componentId] = component;
     }
 
@@ -134,15 +135,7 @@ namespace Engine
     {
         assert(component != nullptr);       
 
-        std::string componentId = component->getId();
+        String componentId = component->getId();
         m_registeredComponents.erase(componentId);
-    }
-
-    void World::update()
-    {
-    }
-
-    void World::updateComponents()
-    {
     }
 }

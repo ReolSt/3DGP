@@ -3,12 +3,15 @@
 #include <unordered_map>
 #include <string>
 
+#include "Alias.h"
+#include "ObjectBase.h"
+
 namespace Engine
 {
 	class Actor;
 	class Component;
 
-	class World
+	class World : public ObjectBase
 	{
 	public:
 		// ----------------------------------------------------------------------
@@ -22,28 +25,26 @@ namespace Engine
 		// Public Member Method
 		// ----------------------------------------------------------------------
 
-		Actor* getActorById(const std::string& id);
-		std::vector<Actor*>&& getActorsByTypeId(size_t typeId);
-		std::vector<Actor*>&& getActorsByTypeName(const std::string& typeName);
+		Actor* getActorById(const String& id);
+		Array<Actor*>&& getActorsByTypeId(UInt64 typeId);
+		Array<Actor*>&& getActorsByTypeName(const String& typeName);
 
 		void addActor(Actor* actor);
 		void removeActor(Actor* actor);
 
-		Component* getRegisteredComponentById(const std::string& id);
-		std::vector<Component*>&& getRegisteredComponentsByTypeId(size_t typeId);
-		std::vector<Component*>&& getRegisteredComponentsByTypeName(const std::string& typeName);
+		Component* getRegisteredComponentById(const String& id);
+		Array<Component*>&& getRegisteredComponentsByTypeId(UInt64 typeId);
+		Array<Component*>&& getRegisteredComponentsByTypeName(const String& typeName);
 
 		void registerComponent(Component* component);
 		void unRegisterComponent(Component* component);
 
-		void update();
-		void updateComponents();
 	private:
 		// ----------------------------------------------------------------------
 		// Private Member Variable
 		// ----------------------------------------------------------------------
 
-		std::unordered_map<std::string, Actor*> m_actors;
-		std::unordered_map<std::string, Component*> m_registeredComponents;
+		UUIDMap<Actor*> m_actors;
+		UUIDMap<Component*> m_registeredComponents;
 	};
 }
