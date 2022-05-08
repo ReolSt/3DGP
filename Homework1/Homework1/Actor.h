@@ -5,9 +5,14 @@
 #include <vector>
 #include <unordered_map>
 
-#include "BasicTypes.h"
+#include "Alias.h"
 #include "ObjectBase.h"
 #include "Transform.h"
+#include "ActorEvent.h"
+
+#define __ActorDefaultParamDef World* world, const String& name
+#define ActorDefaultParamDef Engine::World* world, const Engine::String& name
+#define ActorDefaultParams world, name
 
 namespace Engine
 {
@@ -21,7 +26,7 @@ namespace Engine
 		// Constructor, Destructor
 		// ----------------------------------------------------------------------
 
-		Actor(Actor* owner, const std::string& name);
+		Actor(__ActorDefaultParamDef);
 		virtual ~Actor();
 
 	public:
@@ -29,41 +34,60 @@ namespace Engine
 		// Getter, Setter
 		// ----------------------------------------------------------------------
 
-		Actor* getOwner();
-		World* getWorld();
+		Actor* getOwner() const;
+		World* getWorld() const;
+		bool isActive() const;
 
 		void setOwner(Actor* owner);
 		void setWorld(World* world);
+		void setActive(bool value);
 
 		// ----------------------------------------------------------------------
-		// Child Function
+		// Public Member Method
 		// ----------------------------------------------------------------------
 
-		std::vector<Actor*>& getChildrenByTypeName(const std::string& typeName, std::vector<Actor*>& container);
-		std::vector<Actor*>& getChildrenByTypeId(size_t typeId, std::vector<Actor*>& container);
-		Actor* getFirstChildByTypeName(const std::string& typeName);
-		Actor* getFirstChildByTypeId(size_t typeId);
-		Actor* getChildById(const std::string& id);
-		std::vector<Actor*>& getChildrenByName(const std::string& name, std::vector<Actor*>& container);
+		void Activate();
+		void Deactivate();
+
+		// ----------------------------------------------------------------------
+		// Child Actor Method
+		// ----------------------------------------------------------------------
+
+		Array<Actor*>& getChildrenByTypeName(const String& typeName, Array<Actor*>& container);
+		Array<Actor*>& getChildrenByTypeId(UInt64 typeId, Array<Actor*>& container);
+		Actor* getChildById(const String& id);
+		Array<Actor*>& getChildrenByName(const String& name, Array<Actor*>& container);
+
+		Actor* getFirstChildByTypeName(const String& typeName);
+		Actor* getFirstChildByTypeId(UInt64 typeId);
+		Actor* getFirstChildByName(const String& name);
 
 		void addChild(Actor* actor);
 		void removeChild(Actor* actor);
+		void deleteChild(Actor* actor);
 		void clearChildren();
 		void deleteChildren();
 
+		bool isOwner(Actor* actor);
+		bool isChild(Actor* actor);
+		bool isChildComponent(Component* component);
+
 		// ----------------------------------------------------------------------
-		// Component Function
+		// Child Component Method
 		// ----------------------------------------------------------------------
 
-		std::vector<Component*>& getComponentsByTypeName(const std::string& typeName, std::vector<Component*>& container);
-		std::vector<Component*>& getComponentsByTypeId(size_t typeId, std::vector<Component*>& container);
-		Component* getFirstComponentByTypeName(const std::string& typeName);
-		Component* getFirstComponentByTypeId(size_t typeIdr);
-		Component* getComponentById(const std::string& id);
-		std::vector<Component*>& getComponentsByName(const std::string& name, std::vector<Component*>& container);
+		Component* getComponentById(const String& id);
+		Array<Component*>& getComponentsByTypeName(const String& typeName, Array<Component*>& container);
+		Array<Component*>& getComponentsByTypeId(UInt64 typeId, Array<Component*>& container);		
+		Array<Component*>& getComponentsByName(const String& name, Array<Component*>& container);
+
+		Component* getFirstComponentByTypeName(const String& typeName);
+		Component* getFirstComponentByTypeId(UInt64 typeId);
+		Component* getFirstComponentByName(const String& name);
 
 		void addComponent(Component* component);
 		void removeComponent(Component* component);
+		void deleteComponent(Component* component);
 		void clearComponents();
 		void deleteComponents();
 
@@ -72,12 +96,13 @@ namespace Engine
 		// Private Member Variable
 		// ----------------------------------------------------------------------
 
-		Actor* m_owner;
-		World* m_world;
+		Actor* m_owner = nullptr;
+		World* m_world = nullptr;
 
-		std::unordered_map<std::string, Actor*> m_children;
-		std::unordered_map<std::string, Component*> m_components;
+		bool m_isActive;
+
+		UUIDMap<Actor*> m_children;
+		UUIDMap<Component*> m_components;
+		Map<ActorEventType, UUIDMap<ActorEventCallback>> m_callbacks;
 	};
-
-
 }
