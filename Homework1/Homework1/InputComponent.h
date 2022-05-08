@@ -1,14 +1,17 @@
 #pragma once
 
+#include "Alias.h"
 #include "Component.h"
-#include "Event.h"
-#include "EventCallback.h"
+#include "SystemEvent.h"
 
 #include <unordered_map>
 #include <functional>
 
 namespace Engine
 {
+	class KeyEventCallback;
+	class MouseEventCallback;
+
 	class InputComponent : public Component
 	{
 	public:
@@ -16,20 +19,20 @@ namespace Engine
 		// Consturctor, Destructor
 		// ----------------------------------------------------------------------
 
-		InputComponent(Actor* owner, const std::string& name);
+		InputComponent(__ComponentDefaultParamsDef);
 
 	public:
 		// ----------------------------------------------------------------------
 		// Event Handler Management
 		// ----------------------------------------------------------------------
 
-		void addKeyHandler(EventType& eventType, KeyEventCallback& callback);
-		void removeKeyHandler(EventType& eventType, KeyEventCallback& callback);
+		void addKeyHandler(const SystemEventType& eventType, KeyEventCallback callback);
+		void removeKeyHandler(const SystemEventType& eventType, KeyEventCallback callback);
 
-		void addMouseHandler(EventType& eventType, MouseEventCallback& callback);
-		void removeMouseHandler(EventType& eventType, MouseEventCallback& callback);
+		void addMouseHandler(const SystemEventType& eventType, MouseEventCallback callback);
+		void removeMouseHandler(const SystemEventType& eventType, MouseEventCallback callback);
 
-	protected:
+	public:
 		// ----------------------------------------------------------------------
 		// Event Listeners
 		// ----------------------------------------------------------------------
@@ -42,8 +45,8 @@ namespace Engine
 		// Private Member Variable
 		// ----------------------------------------------------------------------
 
-		std::unordered_map<EventType, std::unordered_map<std::string, KeyEventCallback>> m_keyHandlers;
-		std::unordered_map<EventType, std::unordered_map<std::string, MouseEventCallback>> m_mouseHandlers;
+		Map<SystemEventType, UUIDMap<KeyEventCallback>> m_keyHandlers;
+		Map<SystemEventType, UUIDMap<MouseEventCallback>> m_mouseHandlers;
 	};
 }
 

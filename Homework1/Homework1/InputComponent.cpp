@@ -1,36 +1,38 @@
 #include "InputComponent.h"
+#include "SystemEvent.h"
 
 namespace Engine
 {
-	InputComponent::InputComponent(Actor* owner, const std::string& name) : Component(owner, name)
+	InputComponent::InputComponent(__ComponentDefaultParamsDef)
+		: Component(ComponentDefaultParams)
 	{
-		m_keyHandlers[EventType::KeyDown] = std::unordered_map<std::string, KeyEventCallback>();
-		m_keyHandlers[EventType::KeyUp] = std::unordered_map<std::string, KeyEventCallback>();
+		m_keyHandlers[SystemEventType::KeyDown] = UUIDMap<KeyEventCallback>();
+		m_keyHandlers[SystemEventType::KeyUp] = UUIDMap<KeyEventCallback>();
 
-		m_mouseHandlers[EventType::MouseDown] = std::unordered_map<std::string, MouseEventCallback>();
-		m_mouseHandlers[EventType::MouseUp] = std::unordered_map<std::string, MouseEventCallback>();
-		m_mouseHandlers[EventType::MouseWheel] = std::unordered_map<std::string, MouseEventCallback>();
-		m_mouseHandlers[EventType::MouseMove] = std::unordered_map<std::string, MouseEventCallback>();
-		m_mouseHandlers[EventType::MouseHover] = std::unordered_map<std::string, MouseEventCallback>();
-		m_mouseHandlers[EventType::MouseLeave] = std::unordered_map<std::string, MouseEventCallback>();
+		m_mouseHandlers[SystemEventType::MouseDown] = UUIDMap<MouseEventCallback>();
+		m_mouseHandlers[SystemEventType::MouseUp] = UUIDMap<MouseEventCallback>();
+		m_mouseHandlers[SystemEventType::MouseWheel] = UUIDMap<MouseEventCallback>();
+		m_mouseHandlers[SystemEventType::MouseMove] = UUIDMap<MouseEventCallback>();
+		m_mouseHandlers[SystemEventType::MouseHover] = UUIDMap<MouseEventCallback>();
+		m_mouseHandlers[SystemEventType::MouseLeave] = UUIDMap<MouseEventCallback>();
 	}
 
-	inline void InputComponent::addKeyHandler(EventType& eventType, KeyEventCallback& callback)
+	inline void InputComponent::addKeyHandler(const SystemEventType& eventType, KeyEventCallback callback)
 	{
 		m_keyHandlers[eventType][callback.getId()] = callback;
 	}
 
-	inline void InputComponent::removeKeyHandler(EventType& eventType, KeyEventCallback& callback)
+	inline void InputComponent::removeKeyHandler(const SystemEventType& eventType, KeyEventCallback callback)
 	{
 		m_keyHandlers[eventType].erase(callback.getId());
 	}
 
-	inline void InputComponent::addMouseHandler(EventType& eventType, MouseEventCallback& callback)
+	inline void InputComponent::addMouseHandler(const SystemEventType& eventType, MouseEventCallback callback)
 	{
 		m_mouseHandlers[eventType][callback.getId()] = callback;
 	}
 
-	inline void InputComponent::removeMouseHandler(EventType& eventType, MouseEventCallback& callback)
+	inline void InputComponent::removeMouseHandler(const SystemEventType& eventType, MouseEventCallback callback)
 	{
 		m_mouseHandlers[eventType][callback.getId()] = callback;
 	}
