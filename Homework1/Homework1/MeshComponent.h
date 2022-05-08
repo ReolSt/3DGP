@@ -1,18 +1,16 @@
 #pragma once
 
-#include "Component.h"
+#include "SceneComponent.h"
 
 namespace Engine
 {
-	class Actor;
-
-	class StaticMeshComponent : public Component
+	class MeshComponent : public SceneComponent
 	{
 	public:
 		// ----------------------------------------------------------------------
 		// Constructor, Destructor
 		// ----------------------------------------------------------------------
 
-		StaticMeshComponent(Actor* owner, const std::string& name);
+		MeshComponent(Actor* owner, const String& name);
 	};
 }
