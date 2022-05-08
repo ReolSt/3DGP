@@ -1,5 +1,5 @@
 #include "Engine.h"
-#include "Event.h"
+#include "SystemEvent.h"
 #include "World.h"
 #include "Actor.h"
 #include "InputComponent.h"
@@ -10,9 +10,148 @@
 namespace Engine
 {
 
+	// ----------------------------------------------------------------------
+	// Getter, Setter
+	// ----------------------------------------------------------------------
+
+	World* Engine::getWorld()
+	{
+		return m_world;
+	}
+
+	Array<Renderer*>&& Engine::getRenderers()
+	{
+		Array<Renderer*> container;
+		
+		for (auto& pair : m_renderers)
+		{
+			auto& uuid = pair.first;
+			auto& renderer = pair.second;
+
+			container.push_back(renderer);
+		}
+
+		return std::move(container);
+	}
+
+	Int64 Engine::getRendererCount() const
+	{
+		return m_renderers.size();
+	}
+
+	void Engine::setWorld(World* world)
+	{
+		m_world = world;
+	}
+
+	void Engine::addRenderer(Renderer* renderer)
+	{
+		m_renderers[renderer->getId()] = renderer;
+	}
+
+	void Engine::removeRenderer(const UUID& uuid)
+	{
+		m_renderers.erase(uuid);
+	}
+
+	void Engine::removeRenderer(Renderer* renderer)
+	{
+		m_renderers.erase(renderer->getId());
+	}
+
+	// ----------------------------------------------------------------------
+	// Public Member Method
+	// ----------------------------------------------------------------------
+
+	void Engine::dispatchEvent(SystemEvent* evt)
+	{
+		SystemEventType eventType = evt->getType();
+
+		switch (eventType)
+		{
+		case SystemEventType::WindowMove:
+		case SystemEventType::WindowResize:
+			dispatchWindowEvent(dynamic_cast<WindowEvent*>(evt));
+			break;
+		case SystemEventType::MouseDown:
+		case SystemEventType::MouseUp:
+		case SystemEventType::MouseWheel:
+		case SystemEventType::MouseHover:
+		case SystemEventType::MouseLeave:
+			dispatchMouseEvent(dynamic_cast<MouseEvent*>(evt));
+			break;
+		case SystemEventType::KeyDown:
+		case SystemEventType::KeyUp:
+			dispatchKeyEvent(dynamic_cast<KeyEvent*>(evt));
+			break;
+		}			
+	}
+
+	void Engine::dispatchWindowEvent(WindowEvent* evt)
+	{
+		__debugPrintWindowEvent(evt);
+	}
+
+	void Engine::dispatchMouseEvent(MouseEvent* evt)
+	{
+		__debugPrintMouseEvent(evt);
+
+		auto world = getWorld();
+		if (world == nullptr)
+		{
+			return;
+		}
+
+		auto components = world->getRegisteredComponentsByTypeId(GetTypeId(InputComponent));
+		for (auto& component : components)
+		{
+			auto inputComponent = dynamic_cast<InputComponent*>(component);
+			inputComponent->onMouseEvent(evt);
+		}
+	}
+
+	void Engine::dispatchKeyEvent(KeyEvent* evt)
+	{
+		__debugPrintKeyEvent(evt);
+
+		auto world = getWorld();
+
+		if (world == nullptr)
+		{
+			return;
+		}
+
+		auto components = world->getRegisteredComponentsByTypeId(GetTypeId(InputComponent));
+		for (auto& component : components)
+		{
+			auto inputComponent = dynamic_cast<InputComponent*>(component);
+			inputComponent->onKeyEvent(evt);
+		}
+	}
+
+	void Engine::update(float deltaTime)
+	{
+
+	}
+
+	void Engine::render()
+	{
+		for (auto& pair : m_renderers)
+		{
+			auto& uuid = pair.first;
+			auto& renderer = pair.second;
+
+			renderer->render(this);
+		}
+	}
+
+	// ----------------------------------------------------------------------
+	// Private Member Method
+	// ----------------------------------------------------------------------
+
 	void Engine::__debugPrintWindowEvent(WindowEvent* evt)
 	{
-		EventType eventType = evt->getType();
+		SystemEventType eventType = evt->getType();
 		assert(__isWindowEvent(eventType));
 
 		char debugStr[100];
@@ -28,7 +167,7 @@ namespace Engine
 
 	void Engine::__debugPrintMouseEvent(MouseEvent* evt)
 	{
-		EventType eventType = evt->getType();
+		SystemEventType eventType = evt->getType();
 		assert(__isMouseEvent(eventType));
 
 		char debugStr[100];
@@ -51,7 +190,7 @@ namespace Engine
 
 	void Engine::__debugPrintKeyEvent(KeyEvent* evt)
 	{
-		EventType eventType = evt->getType();
+		SystemEventType eventType = evt->getType();
 		assert(__isKeyEvent(eventType));
 
 		char debugStr[100];
@@ -63,72 +202,5 @@ namespace Engine
 		snprintf(detailStr, 100, "KeyCode: %s\n", GetStringFromKeyCode(evt->getKeyCode()).c_str());
 
 		OutputDebugStringA(detailStr);
-	}	
-
-
-	World* Engine::getWorld()
-	{
-		return m_world;
 	}
-
-	void Engine::setWorld(World* world)
-	{
-		assert(world != nullptr);
-
-		m_world = world;
-	}
-
-	void Engine::dispatchEvent(Event* evt)
-	{
-		EventType eventType = evt->getType();
-
-		switch (eventType)
-		{
-		case EventType::WindowMove:
-		case EventType::WindowResize:
-			dispatchWindowEvent(dynamic_cast<WindowEvent*>(evt));
-			break;
-		case EventType::MouseDown:
-		case EventType::MouseUp:
-		case EventType::MouseWheel:
-		case EventType::MouseHover:
-		case EventType::MouseLeave:
-			dispatchMouseEvent(dynamic_cast<MouseEvent*>(evt));
-			break;
-		case EventType::KeyDown:
-		case EventType::KeyUp:
-			dispatchKeyEvent(dynamic_cast<KeyEvent*>(evt));
-			break;
-		}			
-	}
-
-	void Engine::dispatchWindowEvent(WindowEvent* evt)
-	{
-		__debugPrintWindowEvent(evt);
-	}
-
-	void Engine::dispatchMouseEvent(MouseEvent* evt)
-	{
-		__debugPrintMouseEvent(evt);
-
-		if (m_world != nullptr)
-		{
-			
-		}
-	}
-
-	void Engine::dispatchKeyEvent(KeyEvent* evt)
-	{
-		__debugPrintKeyEvent(evt);
-
-		if (m_world != nullptr)
-		{
-
-		}
-	}
-
-	void Engine::renderWorld()
-	{
-
-	}	
 }

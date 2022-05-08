@@ -1,12 +1,15 @@
+
 #pragma once
 
+#include "Alias.h"
 #include "Singleton.h"
+#include "Renderer.h"
 
 namespace Engine
 {
 	class World;
 
-	class Event;
+	class SystemEvent;
 	class WindowEvent;
 	class KeyEvent;
 	class MouseEvent;
@@ -19,6 +22,8 @@ namespace Engine
 		// ----------------------------------------------------------------------
 
 		World* getWorld();
+		Array<Renderer*>&& getRenderers();
+		Int64 getRendererCount() const;
 
 		void setWorld(World* world);
 
@@ -27,12 +32,17 @@ namespace Engine
 		// Public Member Method
 		// ----------------------------------------------------------------------
 
-		void dispatchEvent(Event * evt);
+		void dispatchEvent(SystemEvent * evt);
 		void dispatchWindowEvent(WindowEvent * evt);
 		void dispatchKeyEvent(KeyEvent * evt);
 		void dispatchMouseEvent(MouseEvent * evt);
 
-		void renderWorld();
+		void update(float deltaTime);
+		void render();
+
+		void addRenderer(Renderer* renderer);
+		void removeRenderer(const UUID& uuid);
+		void removeRenderer(Renderer* renderer);
 
 	private:
 		// ----------------------------------------------------------------------
@@ -48,6 +58,7 @@ namespace Engine
 		// Private Member Variable
 		// ----------------------------------------------------------------------
 
-		World* m_world;
+		World* m_world = nullptr;
+		UUIDMap<Renderer*> m_renderers;
 	};
 }
