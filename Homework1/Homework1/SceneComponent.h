@@ -3,13 +3,10 @@
 #include <string>
 
 #include "Component.h"
+#include "Math.h"
 
 namespace Engine
 {
-	class Vector3;
-	class Quat;
-	class Transform;
-
 	class Actor;
 
 	class SceneComponent : public Component
@@ -19,23 +16,27 @@ namespace Engine
 		// Constructor, Destructor
 		// ----------------------------------------------------------------------
 
-		explicit SceneComponent(Actor* owner, const std::string& name);
+		SceneComponent(__ComponentDefaultParamsDef);
+
+		// ----------------------------------------------------------------------
+		// Getter, Setter
+		// ----------------------------------------------------------------------
 
 		// ----------------------------------------------------------------------
 		// Get Transform
 		// ----------------------------------------------------------------------
 
-		Transform getWorldTransform() const;
-		Transform getRelativeTransform() const;
+		Transform getWorldTransform();
+		Transform getRelativeTransform();
 
-		Vector3 getWorldTranlation() const;
-		Vector3 getRelativeTranslation() const;
+		Vector3 getWorldTranlation();
+		Vector3 getRelativeTranslation();
 
-		Quat getWorldRotation() const;
-		Quat getRelativeRotation() const;
+		Quat getWorldRotation();
+		Quat getRelativeRotation();
 
-		Vector3 getWorldScale() const;
-		Vector3 getRelativeScale() const;
+		Vector3 getWorldScale();
+		Vector3 getRelativeScale();
 
 		// ----------------------------------------------------------------------
 		// Set Transform
@@ -68,7 +69,6 @@ namespace Engine
 		// Private Member Variables
 		// ----------------------------------------------------------------------
 
-		SceneComponent* m_attachedParent;
 		Transform m_relativeTransform;
 	};
 }
