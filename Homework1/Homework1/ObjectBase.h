@@ -3,6 +3,11 @@
 #include <string>
 #include <typeinfo>
 
+#include "Alias.h"
+
+#define GetTypeName(obj) ((std::string(typeid(obj).name())))
+#define GetTypeId(obj) ((typeid(obj).hash_code()))
+
 namespace Engine
 {
 	class ObjectBase
@@ -21,7 +26,7 @@ namespace Engine
 		// ----------------------------------------------------------------------
 
 		std::string getTypeName() const;
-		size_t getTypeId() const;
+		UInt64 getTypeId() const;
 		std::string getId() const;
 		std::string getName() const;
 

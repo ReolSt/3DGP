@@ -1,5 +1,6 @@
 #include "ObjectBase.h"
 #include "UniqueIDGenerator.h"
+#include "Alias.h"
 
 #include <string>
 
@@ -9,7 +10,7 @@ namespace Engine
 	// Constructor, Destructor
 	// ----------------------------------------------------------------------
 
-	ObjectBase::ObjectBase(const std::string& name)
+	ObjectBase::ObjectBase(const String& name)
 	{
 		this->m_id = UniqueIDGenerator::Generate();
 		this->m_name = name;
@@ -19,27 +20,27 @@ namespace Engine
 	// Getter, Setter
 	// ----------------------------------------------------------------------
 
-	std::string ObjectBase::getTypeName() const
+	String ObjectBase::getTypeName() const
 	{
-		return typeid(this).name();
+		return GetTypeName(*this);
 	}
 
-	size_t ObjectBase::getTypeId() const
+	UInt64 ObjectBase::getTypeId() const
 	{
-		return typeid(this).hash_code();
+		return GetTypeId(*this);
 	}
 
-	std::string ObjectBase::getId() const
+	String ObjectBase::getId() const
 	{
 		return this->m_id;
 	}
 
-	std::string ObjectBase::getName() const
+	String ObjectBase::getName() const
 	{
 		return this->m_name;
 	}
 
-	void ObjectBase::setName(const std::string& name)
+	void ObjectBase::setName(const String& name)
 	{
 		this->m_name = name;
 	}
