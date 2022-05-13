@@ -4,7 +4,12 @@
 #include "framework.h"
 #include "Homework1.h"
 
-#include "Win32EventDispatcher.h"
+#include "Engine/Engine.h"
+#include "Engine/Win32EventDispatcher.h"
+#include "Engine/LineMeshRenderer.h"
+#include "HomeworkWorld.h"
+
+#include <chrono>
 
 #define MAX_LOADSTRING 100
 
@@ -18,6 +23,10 @@ ATOM                MyRegisterClass(HINSTANCE hInstance);
 BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
+
+HWND hMainWnd;
+
+Engine::LineMeshRenderer* renderer;
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_opt_ HINSTANCE hPrevInstance,
@@ -34,31 +43,50 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     LoadStringW(hInstance, IDC_HOMEWORK1, szWindowClass, MAX_LOADSTRING);
     MyRegisterClass(hInstance);
 
+    renderer = new Engine::LineMeshRenderer();
+
+    auto engine = Engine::Engine::getInstance();
+    engine->addRenderer(renderer);
+
+    HomeworkWorld* world = new HomeworkWorld();
+    engine->setWorld(world);
+
     // 애플리케이션 초기화를 수행합니다:
     if (!InitInstance (hInstance, nCmdShow))
     {
         return FALSE;
     }
 
-    HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_HOMEWORK1));
+    HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_HOMEWORK1));    
 
-    MSG msg;
+    MSG msg;    
+
+    auto lastTime = std::chrono::system_clock::now();
+    auto currentTime = lastTime;
 
     // 기본 메시지 루프입니다:
     while (true)
     {
+        currentTime = std::chrono::system_clock::now();
+
         if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
         {
             if (msg.message == WM_QUIT)
             {
                 break;
             }
+
             TranslateMessage(&msg);
             DispatchMessage(&msg);
         }
         else
         {
+            std::chrono::duration<float> deltaTime = currentTime - lastTime;
 
+            engine->update(deltaTime.count());
+            engine->render();
+
+            lastTime = currentTime;
         }
     }
 
@@ -106,17 +134,20 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
 BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
    hInst = hInstance; // 인스턴스 핸들을 전역 변수에 저장합니다.
+   RECT rc = { 0, 0, 1280, 720 };
+   DWORD dwStyle = WS_OVERLAPPED | WS_CAPTION | WS_MINIMIZEBOX | WS_SYSMENU | WS_BORDER;
+   AdjustWindowRect(&rc, dwStyle, FALSE);
+   hMainWnd = CreateWindow(szWindowClass, szTitle, dwStyle, CW_USEDEFAULT, CW_USEDEFAULT, rc.right - rc.left, rc.bottom - rc.top, NULL, NULL, hInstance, NULL);
 
-   HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
-      CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);
-
-   if (!hWnd)
+   if (!hMainWnd)
    {
       return FALSE;
    }
 
-   ShowWindow(hWnd, nCmdShow);
-   UpdateWindow(hWnd);
+   renderer->initialize(hInstance, hMainWnd);
+
+   ShowWindow(hMainWnd, nCmdShow);
+   UpdateWindow(hMainWnd);
 
    return TRUE;
 }
