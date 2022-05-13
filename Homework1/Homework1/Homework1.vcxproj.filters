@@ -13,14 +13,71 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="헤더 파일\Math">
-      <UniqueIdentifier>{16cdca98-85cf-4eea-9620-ed848e083e3a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="헤더 파일\Engine">
       <UniqueIdentifier>{105141c9-1e3c-43b9-9034-561ee0b19ff4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="헤더 파일\Core">
+    <Filter Include="헤더 파일\Engine\Actor">
+      <UniqueIdentifier>{fa159eeb-c4ff-4a21-bfee-c0bc05f6dd0c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Engine\Component">
+      <UniqueIdentifier>{11cfe3f0-e219-4b51-b7df-0ac7c9b8ba41}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Engine">
+      <UniqueIdentifier>{9d2c4c07-43c8-41d6-92a3-b01bd8c7c8ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Engine\Actor">
+      <UniqueIdentifier>{3dd429e5-51c7-4847-8716-3c012356a08b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Engine\Component">
+      <UniqueIdentifier>{aa0eca3b-3293-4071-bd4b-5e5c4fcc0726}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Engine\Core">
+      <UniqueIdentifier>{fba1ea11-3d7c-4ad6-95df-9e3632fd8af6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Engine\Math">
+      <UniqueIdentifier>{61f00684-cf8e-480c-aaa6-7e51faa79a49}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Engine\Core">
       <UniqueIdentifier>{7c87ca1c-8157-4d3b-8f81-f3de6229de2d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Engine\Math">
+      <UniqueIdentifier>{16cdca98-85cf-4eea-9620-ed848e083e3a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Engine\Renderer">
+      <UniqueIdentifier>{c9e8c1de-2a97-49ac-bff8-4ba978a536f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Engine\Mesh">
+      <UniqueIdentifier>{fb055163-ae17-40ad-9bec-60a4c47a42f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Engine\Renderer">
+      <UniqueIdentifier>{a056d7c1-3f57-4c72-bd2c-4734c49721aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Engine\Mesh">
+      <UniqueIdentifier>{3236e8d1-e937-4978-962a-49968042f692}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Mesh">
+      <UniqueIdentifier>{404ef00a-2d1f-4d22-ab15-0a7184c874f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Actor">
+      <UniqueIdentifier>{daa864cb-b8ff-4580-994f-b262844a4f56}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Mesh">
+      <UniqueIdentifier>{45bbf433-1739-48c7-a6f1-e843ecb718f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Actor">
+      <UniqueIdentifier>{49dc745f-9e5c-4ada-9366-1e5c4c80e656}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\World">
+      <UniqueIdentifier>{b1b402ea-b5ae-4742-8b99-8527e0ec889b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\World">
+      <UniqueIdentifier>{15ce15c7-b2c3-4dcd-82c1-d912e0b36250}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Component">
+      <UniqueIdentifier>{aef4aa1b-d479-4ae7-8f9a-bd077805e4a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Component">
+      <UniqueIdentifier>{c83d7c42-d795-4660-a596-9ed61ba15c80}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -36,108 +93,249 @@
     <ClInclude Include="Homework1.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Math.h">
-      <Filter>헤더 파일\Math</Filter>
-    </ClInclude>
-    <ClInclude Include="Vector3.h">
-      <Filter>헤더 파일\Math</Filter>
-    </ClInclude>
-    <ClInclude Include="MathCommon.h">
-      <Filter>헤더 파일\Math</Filter>
-    </ClInclude>
-    <ClInclude Include="Quat.h">
-      <Filter>헤더 파일\Math</Filter>
-    </ClInclude>
-    <ClInclude Include="Vector4.h">
-      <Filter>헤더 파일\Math</Filter>
-    </ClInclude>
-    <ClInclude Include="Matrix.h">
-      <Filter>헤더 파일\Math</Filter>
-    </ClInclude>
-    <ClInclude Include="Rotator.h">
-      <Filter>헤더 파일\Math</Filter>
-    </ClInclude>
-    <ClInclude Include="Plane.h">
-      <Filter>헤더 파일\Math</Filter>
-    </ClInclude>
-    <ClInclude Include="Actor.h">
+    <ClInclude Include="Engine\Engine.h">
       <Filter>헤더 파일\Engine</Filter>
     </ClInclude>
-    <ClInclude Include="Component.h">
+    <ClInclude Include="Engine\World.h">
       <Filter>헤더 파일\Engine</Filter>
     </ClInclude>
-    <ClInclude Include="ObjectBase.h">
-      <Filter>헤더 파일\Engine</Filter>
+    <ClInclude Include="Engine\Actor.h">
+      <Filter>헤더 파일\Engine\Actor</Filter>
     </ClInclude>
-    <ClInclude Include="SceneComponent.h">
-      <Filter>헤더 파일\Engine</Filter>
+    <ClInclude Include="Engine\ActorEvent.h">
+      <Filter>헤더 파일\Engine\Actor</Filter>
     </ClInclude>
-    <ClInclude Include="StaticMeshComponent.h">
-      <Filter>헤더 파일\Engine</Filter>
+    <ClInclude Include="Engine\CameraComponent.h">
+      <Filter>헤더 파일\Engine\Component</Filter>
     </ClInclude>
-    <ClInclude Include="Transform.h">
-      <Filter>헤더 파일\Math</Filter>
+    <ClInclude Include="Engine\Component.h">
+      <Filter>헤더 파일\Engine\Component</Filter>
     </ClInclude>
-    <ClInclude Include="World.h">
-      <Filter>헤더 파일\Engine</Filter>
+    <ClInclude Include="Engine\InputComponent.h">
+      <Filter>헤더 파일\Engine\Component</Filter>
     </ClInclude>
-    <ClInclude Include="UniqueIDGenerator.h">
-      <Filter>헤더 파일\Core</Filter>
+    <ClInclude Include="Engine\LineMeshComponent.h">
+      <Filter>헤더 파일\Engine\Component</Filter>
     </ClInclude>
-    <ClInclude Include="Singleton.h">
-      <Filter>헤더 파일\Core</Filter>
+    <ClInclude Include="Engine\Box.h">
+      <Filter>헤더 파일\Engine\Core</Filter>
     </ClInclude>
-    <ClInclude Include="Renderer.h">
-      <Filter>헤더 파일\Engine</Filter>
+    <ClInclude Include="Engine\Alias.h">
+      <Filter>헤더 파일\Engine\Core</Filter>
     </ClInclude>
-    <ClInclude Include="Input.h">
-      <Filter>헤더 파일\Engine</Filter>
+    <ClInclude Include="Engine\Quat.h">
+      <Filter>헤더 파일\Engine\Math</Filter>
     </ClInclude>
-    <ClInclude Include="Win32EventDispatcher.h">
-      <Filter>헤더 파일\Engine</Filter>
+    <ClInclude Include="Engine\ObjectBase.h">
+      <Filter>헤더 파일\Engine\Core</Filter>
     </ClInclude>
-    <ClInclude Include="InputComponent.h">
-      <Filter>헤더 파일</Filter>
+    <ClInclude Include="Engine\Rotator.h">
+      <Filter>헤더 파일\Engine\Math</Filter>
     </ClInclude>
-    <ClInclude Include="BasicTypes.h">
-      <Filter>헤더 파일</Filter>
+    <ClInclude Include="Engine\Matrix.h">
+      <Filter>헤더 파일\Engine\Math</Filter>
     </ClInclude>
-    <ClInclude Include="GameEngine.h">
-      <Filter>헤더 파일\Engine</Filter>
+    <ClInclude Include="Engine\Math.h">
+      <Filter>헤더 파일\Engine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\MathCommon.h">
+      <Filter>헤더 파일\Engine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\LineMeshRenderer.h">
+      <Filter>헤더 파일\Engine\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\LineMesh.h">
+      <Filter>헤더 파일\Engine\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Renderer.h">
+      <Filter>헤더 파일\Engine\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Singleton.h">
+      <Filter>헤더 파일\Engine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Event.h">
+      <Filter>헤더 파일\Engine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\MeshComponent.h">
+      <Filter>헤더 파일\Engine\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\SceneComponent.h">
+      <Filter>헤더 파일\Engine\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\UniqueIDGenerator.h">
+      <Filter>헤더 파일\Engine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Win32EventDispatcher.h">
+      <Filter>헤더 파일\Engine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Vector4.h">
+      <Filter>헤더 파일\Engine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Vector3.h">
+      <Filter>헤더 파일\Engine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Transform.h">
+      <Filter>헤더 파일\Engine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\SystemEvent.h">
+      <Filter>헤더 파일\Engine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Viewport.h">
+      <Filter>헤더 파일\Engine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Plane.h">
+      <Filter>헤더 파일\Engine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="CubeActor.h">
+      <Filter>헤더 파일\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="CircleMesh.h">
+      <Filter>헤더 파일\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="CubeMesh.h">
+      <Filter>헤더 파일\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="PlaneActor.h">
+      <Filter>헤더 파일\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="PlaneMesh.h">
+      <Filter>헤더 파일\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerActor.h">
+      <Filter>헤더 파일\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="RollerCoasterActor.h">
+      <Filter>헤더 파일\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="SphereActor.h">
+      <Filter>헤더 파일\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="SphereMesh.h">
+      <Filter>헤더 파일\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="HomeworkWorld.h">
+      <Filter>헤더 파일\World</Filter>
+    </ClInclude>
+    <ClInclude Include="SinCurveMesh.h">
+      <Filter>헤더 파일\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="LineMeshActor.h">
+      <Filter>헤더 파일\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="SplineCurveMesh.h">
+      <Filter>헤더 파일\Mesh</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="World.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="Engine\Actor.cpp">
+      <Filter>소스 파일\Engine\Actor</Filter>
     </ClCompile>
-    <ClCompile Include="Renderer.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="Engine\ActorEvent.cpp">
+      <Filter>소스 파일\Engine\Actor</Filter>
     </ClCompile>
-    <ClCompile Include="StaticMeshComponent.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="Engine\CameraComponent.cpp">
+      <Filter>소스 파일\Engine\Component</Filter>
     </ClCompile>
-    <ClCompile Include="SceneComponent.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="Engine\Component.cpp">
+      <Filter>소스 파일\Engine\Component</Filter>
     </ClCompile>
-    <ClCompile Include="Actor.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="Engine\LineMeshComponent.cpp">
+      <Filter>소스 파일\Engine\Component</Filter>
     </ClCompile>
-    <ClCompile Include="ObjectBase.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="Engine\InputComponent.cpp">
+      <Filter>소스 파일\Engine\Component</Filter>
     </ClCompile>
-    <ClCompile Include="Input.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="Engine\SceneComponent.cpp">
+      <Filter>소스 파일\Engine\Component</Filter>
     </ClCompile>
-    <ClCompile Include="Win32EventDispatcher.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="Engine\MeshComponent.cpp">
+      <Filter>소스 파일\Engine\Component</Filter>
     </ClCompile>
-    <ClCompile Include="GameEngine.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="Engine\Vector4.cpp">
+      <Filter>소스 파일\Engine\Math</Filter>
     </ClCompile>
-    <ClCompile Include="InputComponent.cpp">
+    <ClCompile Include="Engine\Vector3.cpp">
+      <Filter>소스 파일\Engine\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Transform.cpp">
+      <Filter>소스 파일\Engine\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\SystemEvent.cpp">
+      <Filter>소스 파일\Engine\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\ObjectBase.cpp">
+      <Filter>소스 파일\Engine\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Win32EventDispatcher.cpp">
+      <Filter>소스 파일\Engine\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Matrix.cpp">
+      <Filter>소스 파일\Engine\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Plane.cpp">
+      <Filter>소스 파일\Engine\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Quat.cpp">
+      <Filter>소스 파일\Engine\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\LineMeshRenderer.cpp">
+      <Filter>소스 파일\Engine\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Renderer.cpp">
+      <Filter>소스 파일\Engine\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Rotator.cpp">
+      <Filter>소스 파일\Engine\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Engine.cpp">
+      <Filter>소스 파일\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\World.cpp">
+      <Filter>소스 파일\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\LineMesh.cpp">
+      <Filter>소스 파일\Engine\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="CubeActor.cpp">
+      <Filter>소스 파일\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="CubeMesh.cpp">
+      <Filter>소스 파일\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="PlaneActor.cpp">
+      <Filter>소스 파일\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerActor.cpp">
+      <Filter>소스 파일\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="RollerCoasterActor.cpp">
+      <Filter>소스 파일\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="SphereActor.cpp">
+      <Filter>소스 파일\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="SphereMesh.cpp">
+      <Filter>소스 파일\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="PlaneMesh.cpp">
+      <Filter>소스 파일\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="CircleMesh.cpp">
+      <Filter>소스 파일\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="HomeworkWorld.cpp">
+      <Filter>소스 파일\World</Filter>
+    </ClCompile>
+    <ClCompile Include="SinCurveMesh.cpp">
+      <Filter>소스 파일\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="LineMeshActor.cpp">
+      <Filter>소스 파일\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="SplineCurveMesh.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

@@ -78,9 +78,11 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
+    <IncludePath>$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -114,7 +116,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
       <ConformanceMode>false</ConformanceMode>
       <Optimization>Disabled</Optimization>
     </ClCompile>
@@ -129,7 +131,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;_WINDOWS;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
@@ -140,46 +142,93 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Actor.h" />
-    <ClInclude Include="BasicTypes.h" />
-    <ClInclude Include="Component.h" />
+    <ClInclude Include="CircleMesh.h" />
+    <ClInclude Include="CubeActor.h" />
+    <ClInclude Include="CubeMesh.h" />
+    <ClInclude Include="Engine\Actor.h" />
+    <ClInclude Include="Engine\ActorEvent.h" />
+    <ClInclude Include="Engine\Alias.h" />
+    <ClInclude Include="Engine\Box.h" />
+    <ClInclude Include="Engine\CameraComponent.h" />
+    <ClInclude Include="Engine\Component.h" />
+    <ClInclude Include="Engine\Engine.h" />
+    <ClInclude Include="Engine\Event.h" />
+    <ClInclude Include="Engine\InputComponent.h" />
+    <ClInclude Include="Engine\LineMesh.h" />
+    <ClInclude Include="Engine\LineMeshComponent.h" />
+    <ClInclude Include="Engine\LineMeshRenderer.h" />
+    <ClInclude Include="Engine\Math.h" />
+    <ClInclude Include="Engine\MathCommon.h" />
+    <ClInclude Include="Engine\Matrix.h" />
+    <ClInclude Include="Engine\MeshComponent.h" />
+    <ClInclude Include="Engine\ObjectBase.h" />
+    <ClInclude Include="Engine\Plane.h" />
+    <ClInclude Include="Engine\Quat.h" />
+    <ClInclude Include="Engine\Renderer.h" />
+    <ClInclude Include="Engine\Rotator.h" />
+    <ClInclude Include="Engine\SceneComponent.h" />
+    <ClInclude Include="Engine\Singleton.h" />
+    <ClInclude Include="Engine\SystemEvent.h" />
+    <ClInclude Include="Engine\Transform.h" />
+    <ClInclude Include="Engine\UniqueIDGenerator.h" />
+    <ClInclude Include="Engine\Vector3.h" />
+    <ClInclude Include="Engine\Vector4.h" />
+    <ClInclude Include="Engine\Viewport.h" />
+    <ClInclude Include="Engine\Win32EventDispatcher.h" />
+    <ClInclude Include="Engine\World.h" />
+    <ClInclude Include="HomeworkWorld.h" />
+    <ClInclude Include="LineMeshActor.h" />
+    <ClInclude Include="PlaneActor.h" />
+    <ClInclude Include="PlaneMesh.h" />
+    <ClInclude Include="PlayerActor.h" />
+    <ClInclude Include="RollerCoasterActor.h" />
     <ClInclude Include="framework.h" />
-    <ClInclude Include="GameEngine.h" />
     <ClInclude Include="Homework1.h" />
-    <ClInclude Include="Input.h" />
-    <ClInclude Include="InputComponent.h" />
-    <ClInclude Include="Math.h" />
-    <ClInclude Include="MathCommon.h" />
-    <ClInclude Include="Matrix.h" />
-    <ClInclude Include="ObjectBase.h" />
-    <ClInclude Include="Plane.h" />
-    <ClInclude Include="Quat.h" />
-    <ClInclude Include="Renderer.h" />
     <ClInclude Include="Resource.h" />
-    <ClInclude Include="Rotator.h" />
-    <ClInclude Include="SceneComponent.h" />
-    <ClInclude Include="Singleton.h" />
-    <ClInclude Include="StaticMeshComponent.h" />
+    <ClInclude Include="SinCurveMesh.h" />
+    <ClInclude Include="SphereActor.h" />
+    <ClInclude Include="SphereMesh.h" />
+    <ClInclude Include="SplineCurveMesh.h" />
     <ClInclude Include="targetver.h" />
-    <ClInclude Include="Transform.h" />
-    <ClInclude Include="UniqueIDGenerator.h" />
-    <ClInclude Include="Vector3.h" />
-    <ClInclude Include="Vector4.h" />
-    <ClInclude Include="Win32EventDispatcher.h" />
-    <ClInclude Include="World.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Actor.cpp" />
-    <ClCompile Include="GameEngine.cpp" />
-    <ClCompile Include="InputComponent.cpp" />
+    <ClCompile Include="CircleMesh.cpp" />
+    <ClCompile Include="CubeActor.cpp" />
+    <ClCompile Include="CubeMesh.cpp" />
+    <ClCompile Include="Engine\Actor.cpp" />
+    <ClCompile Include="Engine\ActorEvent.cpp" />
+    <ClCompile Include="Engine\CameraComponent.cpp" />
+    <ClCompile Include="Engine\Component.cpp" />
+    <ClCompile Include="Engine\Engine.cpp" />
+    <ClCompile Include="Engine\InputComponent.cpp" />
+    <ClCompile Include="Engine\LineMesh.cpp" />
+    <ClCompile Include="Engine\LineMeshComponent.cpp" />
+    <ClCompile Include="Engine\LineMeshRenderer.cpp" />
+    <ClCompile Include="Engine\Matrix.cpp" />
+    <ClCompile Include="Engine\MeshComponent.cpp" />
+    <ClCompile Include="Engine\ObjectBase.cpp" />
+    <ClCompile Include="Engine\Plane.cpp" />
+    <ClCompile Include="Engine\Quat.cpp" />
+    <ClCompile Include="Engine\Renderer.cpp" />
+    <ClCompile Include="Engine\Rotator.cpp" />
+    <ClCompile Include="Engine\SceneComponent.cpp" />
+    <ClCompile Include="Engine\SystemEvent.cpp" />
+    <ClCompile Include="Engine\Transform.cpp" />
+    <ClCompile Include="Engine\Vector3.cpp" />
+    <ClCompile Include="Engine\Vector4.cpp" />
+    <ClCompile Include="Engine\Win32EventDispatcher.cpp" />
+    <ClCompile Include="Engine\World.cpp" />
+    <ClCompile Include="HomeworkWorld.cpp" />
+    <ClCompile Include="LineMeshActor.cpp" />
+    <ClCompile Include="PlaneActor.cpp" />
+    <ClCompile Include="PlaneMesh.cpp" />
+    <ClCompile Include="PlayerActor.cpp" />
+    <ClCompile Include="RollerCoasterActor.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Input.cpp" />
-    <ClCompile Include="ObjectBase.cpp" />
-    <ClCompile Include="Renderer.cpp" />
-    <ClCompile Include="SceneComponent.cpp" />
-    <ClCompile Include="StaticMeshComponent.cpp" />
-    <ClCompile Include="Win32EventDispatcher.cpp" />
-    <ClCompile Include="World.cpp" />
+    <ClCompile Include="SinCurveMesh.cpp" />
+    <ClCompile Include="SphereActor.cpp" />
+    <ClCompile Include="SphereMesh.cpp" />
+    <ClCompile Include="SplineCurveMesh.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Homework1.rc" />
