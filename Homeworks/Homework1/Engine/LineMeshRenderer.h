@@ -24,7 +24,7 @@ namespace Engine
 		// ----------------------------------------------------------------------
 
 		void initialize(HINSTANCE instance, HWND window);
-		void render(Engine* engine) override;
+		void render(GameEngine* engine) override;
 
 	private:
 		// ----------------------------------------------------------------------

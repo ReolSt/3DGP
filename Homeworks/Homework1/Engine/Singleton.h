@@ -11,7 +11,7 @@ namespace Engine
 		static std::shared_ptr<T> _instance;
 
 	public:
-		static std::shared_ptr<T> getInstance()
+		static std::shared_ptr<T> GetInstance()
 		{
 			if (_instance == nullptr)
 			{
@@ -21,12 +21,12 @@ namespace Engine
 			return _instance;
 		}
 
-		static void setInstance(std::shared_ptr<T> instance)
+		static void SetInstance(std::shared_ptr<T> instance)
 		{
 			_instance = instance;
 		}
 
-		static void destroyInstance()
+		static void DestroyInstance()
 		{
 			if (_instance)
 			{

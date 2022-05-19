@@ -12,7 +12,7 @@ namespace Engine
 
 	ObjectBase::ObjectBase(const String& name)
 	{
-		__setId(UniqueIDGenerator::Generate());
+		__setId(UUIDGenerator::Generate());
 		setName(name);
 	}
 

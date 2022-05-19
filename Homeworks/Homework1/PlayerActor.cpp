@@ -2,7 +2,7 @@
 
 #include "Engine/Math.h"
 #include "Engine/Viewport.h"
-#include "Engine/Engine.h"
+#include "Engine/GameEngine.h"
 #include "Engine/LineMeshComponent.h"
 
 #include "CubeMesh.h"
@@ -117,7 +117,7 @@ void PlayerActor::mouseMove(Engine::MouseEvent* evt)
 	int dy = y - py;
 
 	float sensitivity = 100.0f;
-	float deltaTime = Engine::Engine::getInstance()->getDeltaTime();
+	float deltaTime = Engine::GameEngine::GetInstance()->getDeltaTime();
 
 	if (m_isDragging)
 	{

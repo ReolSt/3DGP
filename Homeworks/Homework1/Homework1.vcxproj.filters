@@ -93,7 +93,7 @@
     <ClInclude Include="Homework1.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Engine.h">
+    <ClInclude Include="Engine\GameEngine.h">
       <Filter>헤더 파일\Engine</Filter>
     </ClInclude>
     <ClInclude Include="Engine\World.h">
@@ -290,7 +290,7 @@
     <ClCompile Include="Engine\Rotator.cpp">
       <Filter>소스 파일\Engine\Math</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Engine.cpp">
+    <ClCompile Include="Engine\GameEngine.cpp">
       <Filter>소스 파일\Engine</Filter>
     </ClCompile>
     <ClCompile Include="Engine\World.cpp">

@@ -1,34 +1,49 @@
 #pragma once
 
-#include "ObjectBase.h"
+#include "Alias.h"
 
 namespace Engine
 {
-	class Engine;
-
-	class Renderer : public ObjectBase
+	struct Rect
 	{
 	public:
 		// ----------------------------------------------------------------------
 		// Constructor, Destructor
 		// ----------------------------------------------------------------------
 
-		Renderer();
-		virtual ~Renderer();
+		Rect() { }
 
+		Rect(Int x, Int y, Int width, Int height)
+		{
+			m_x = x;
+			m_y = y;
+			m_width = width;
+			m_height = height;
+		}
+
+	public:
 		// ----------------------------------------------------------------------
 		// Getter, Setter
 		// ----------------------------------------------------------------------
 
-		// ----------------------------------------------------------------------
-		// Public Member Method
-		// ----------------------------------------------------------------------
+		Int getX() const { return m_x; }
+		Int getY() const { return m_y; }
+		Int getWidth() const { return m_width; }
+		Int getHeight() const { return m_height; }
 
-		virtual void render(Engine* engine) = 0;
+		void setX(Int left) { m_x = left; }
+		void setY(Int top) { m_y = top; }
+		void setWidth(Int width) { m_width = width; }
+		void setHeight(Int height) { m_height = height; }
 
 	private:
 		// ----------------------------------------------------------------------
 		// Private Member Variable
 		// ----------------------------------------------------------------------
+
+		Int m_x = 0;
+		Int m_y = 0;
+		Int m_width = 0;
+		Int m_height = 0;
 	};
 }

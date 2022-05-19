@@ -1,6 +1,6 @@
 #include "Win32EventDispatcher.h"
 #include "SystemEvent.h"
-#include "Engine.h"
+#include "GameEngine.h"
 #include "Alias.h"
 
 #include <windows.h>
@@ -12,7 +12,7 @@ namespace Engine
 
     LRESULT Win32EventDispatcher::dispatchEvent(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     {
-        auto engine = Engine::getInstance();
+        auto engine = GameEngine::GetInstance();
 
         // ----------------------------------------------------------------------
         // Window Event

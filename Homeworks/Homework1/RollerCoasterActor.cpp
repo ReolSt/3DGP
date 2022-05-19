@@ -3,7 +3,7 @@
 
 #include "Engine/Math.h"
 
-#include "Engine/Engine.h"
+#include "Engine/GameEngine.h"
 #include "Engine/ActorEvent.h"
 #include "Engine/SystemEvent.h"
 
@@ -88,7 +88,7 @@ void RollerCoasterActor::update(Engine::ActorEvent* evt)
 	playerTransform.setTranslation((v1 + v2) / 2.0f);
 	m_playerSceneRoot->setRelativeTransform(playerTransform);
 
-	elapsedTime += Engine::Engine::getInstance()->getDeltaTime() * m_direction;
+	elapsedTime += Engine::GameEngine::GetInstance()->getDeltaTime() * m_direction;
 }
 
 void RollerCoasterActor::keyDown(Engine::KeyEvent* evt)

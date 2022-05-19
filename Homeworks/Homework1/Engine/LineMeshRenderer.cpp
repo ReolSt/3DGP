@@ -1,5 +1,5 @@
 #include "LineMeshRenderer.h"
-#include "Engine.h"
+#include "GameEngine.h"
 #include "World.h"
 #include "Component.h"
 #include "LineMeshComponent.h"
@@ -45,7 +45,7 @@ namespace Engine
 		SetBkMode(m_dc, TRANSPARENT);
 	}
 
-	void LineMeshRenderer::render(Engine* engine)
+	void LineMeshRenderer::render(GameEngine* engine)
 	{
 		auto world = engine->getWorld();
 

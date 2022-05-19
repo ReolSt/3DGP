@@ -4,7 +4,7 @@
 #include "framework.h"
 #include "Homework1.h"
 
-#include "Engine/Engine.h"
+#include "Engine/GameEngine.h"
 #include "Engine/Win32EventDispatcher.h"
 #include "Engine/LineMeshRenderer.h"
 #include "HomeworkWorld.h"
@@ -45,7 +45,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     renderer = new Engine::LineMeshRenderer();
 
-    auto engine = Engine::Engine::getInstance();
+    auto engine = Engine::GameEngine::GetInstance();
     engine->addRenderer(renderer);
 
     HomeworkWorld* world = new HomeworkWorld();

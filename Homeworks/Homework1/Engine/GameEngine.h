@@ -14,7 +14,7 @@ namespace Engine
 	class KeyEvent;
 	class MouseEvent;
 
-	class Engine : public Singleton<Engine>
+	class GameEngine : public Singleton<GameEngine>
 	{
 	public:
 		// ----------------------------------------------------------------------

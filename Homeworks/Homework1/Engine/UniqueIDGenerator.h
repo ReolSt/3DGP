@@ -8,11 +8,11 @@
 
 namespace Engine
 {
-	class UniqueIDGenerator
+	class UUIDGenerator
 	{
 	public:
-		UniqueIDGenerator() { }
-		virtual ~UniqueIDGenerator() { }
+		UUIDGenerator() { }
+		virtual ~UUIDGenerator() { }
 
 	public:
 		static std::string Generate()

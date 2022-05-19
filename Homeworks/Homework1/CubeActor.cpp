@@ -3,7 +3,7 @@
 #include "Engine/Math.h"
 #include "Engine/ActorEvent.h"
 #include "Engine/SystemEvent.h"
-#include "Engine/Engine.h"
+#include "Engine/GameEngine.h"
 
 #include "CubeMesh.h"
 
@@ -32,7 +32,7 @@ void CubeActor::update(Engine::ActorEvent* evt)
 	static float xAngle = 0.0f;
 	static float yAngle = 0.0f;
 
-	float deltaTime = Engine::Engine::getInstance()->getDeltaTime();
+	float deltaTime = Engine::GameEngine::GetInstance()->getDeltaTime();
 	float rotationSpeed = 1.0f * deltaTime;
 
 	xAngle += rotationSpeed;

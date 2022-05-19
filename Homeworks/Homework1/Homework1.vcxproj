@@ -151,7 +151,7 @@
     <ClInclude Include="Engine\Box.h" />
     <ClInclude Include="Engine\CameraComponent.h" />
     <ClInclude Include="Engine\Component.h" />
-    <ClInclude Include="Engine\Engine.h" />
+    <ClInclude Include="Engine\GameEngine.h" />
     <ClInclude Include="Engine\Event.h" />
     <ClInclude Include="Engine\InputComponent.h" />
     <ClInclude Include="Engine\LineMesh.h" />
@@ -199,7 +199,7 @@
     <ClCompile Include="Engine\ActorEvent.cpp" />
     <ClCompile Include="Engine\CameraComponent.cpp" />
     <ClCompile Include="Engine\Component.cpp" />
-    <ClCompile Include="Engine\Engine.cpp" />
+    <ClCompile Include="Engine\GameEngine.cpp" />
     <ClCompile Include="Engine\InputComponent.cpp" />
     <ClCompile Include="Engine\LineMesh.cpp" />
     <ClCompile Include="Engine\LineMeshComponent.cpp" />

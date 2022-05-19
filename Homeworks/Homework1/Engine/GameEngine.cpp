@@ -1,4 +1,4 @@
-#include "Engine.h"
+#include "GameEngine.h"
 #include "SystemEvent.h"
 #include "World.h"
 #include "Actor.h"
@@ -14,12 +14,12 @@ namespace Engine
 	// Getter, Setter
 	// ----------------------------------------------------------------------
 
-	World* Engine::getWorld()
+	World* GameEngine::getWorld()
 	{
 		return m_world;
 	}
 
-	Array<Renderer*>&& Engine::getRenderers()
+	Array<Renderer*>&& GameEngine::getRenderers()
 	{
 		Array<Renderer*> container;
 		
@@ -34,37 +34,37 @@ namespace Engine
 		return std::move(container);
 	}
 
-	Int64 Engine::getRendererCount() const
+	Int64 GameEngine::getRendererCount() const
 	{
 		return m_renderers.size();
 	}
 
-	Float Engine::getDeltaTime() const
+	Float GameEngine::getDeltaTime() const
 	{
 		return m_deltaTime;
 	}
 
-	void Engine::setWorld(World* world)
+	void GameEngine::setWorld(World* world)
 	{
 		m_world = world;
 	}
 
-	void Engine::setDeltaTime(Float deltaTime)
+	void GameEngine::setDeltaTime(Float deltaTime)
 	{
 		m_deltaTime = deltaTime;
 	}
 
-	void Engine::addRenderer(Renderer* renderer)
+	void GameEngine::addRenderer(Renderer* renderer)
 	{
 		m_renderers[renderer->getId()] = renderer;
 	}
 
-	void Engine::removeRenderer(const UUID& uuid)
+	void GameEngine::removeRenderer(const UUID& uuid)
 	{
 		m_renderers.erase(uuid);
 	}
 
-	void Engine::removeRenderer(Renderer* renderer)
+	void GameEngine::removeRenderer(Renderer* renderer)
 	{
 		m_renderers.erase(renderer->getId());
 	}
@@ -73,7 +73,7 @@ namespace Engine
 	// Public Member Method
 	// ----------------------------------------------------------------------
 
-	void Engine::dispatchEvent(SystemEvent* evt)
+	void GameEngine::dispatchEvent(SystemEvent* evt)
 	{
 		SystemEventType eventType = evt->getType();
 
@@ -98,12 +98,12 @@ namespace Engine
 		}			
 	}
 
-	void Engine::dispatchWindowEvent(WindowEvent* evt)
+	void GameEngine::dispatchWindowEvent(WindowEvent* evt)
 	{
 		//__debugPrintWindowEvent(evt);
 	}
 
-	void Engine::dispatchMouseEvent(MouseEvent* evt)
+	void GameEngine::dispatchMouseEvent(MouseEvent* evt)
 	{
 		__debugPrintMouseEvent(evt);
 
@@ -123,7 +123,7 @@ namespace Engine
 		}
 	}
 
-	void Engine::dispatchKeyEvent(KeyEvent* evt)
+	void GameEngine::dispatchKeyEvent(KeyEvent* evt)
 	{
 		__debugPrintKeyEvent(evt);
 
@@ -144,7 +144,7 @@ namespace Engine
 		}
 	}
 
-	void Engine::update(float deltaTime)
+	void GameEngine::update(float deltaTime)
 	{
 		setDeltaTime(deltaTime);
 
@@ -167,7 +167,7 @@ namespace Engine
 		}
 	}
 
-	void Engine::render()
+	void GameEngine::render()
 	{
 		for (auto& pair : m_renderers)
 		{
@@ -182,7 +182,7 @@ namespace Engine
 	// Private Member Method
 	// ----------------------------------------------------------------------
 
-	void Engine::__debugPrintWindowEvent(WindowEvent* evt)
+	void GameEngine::__debugPrintWindowEvent(WindowEvent* evt)
 	{
 		SystemEventType eventType = evt->getType();
 		assert(__isWindowEvent(eventType));
@@ -198,7 +198,7 @@ namespace Engine
 		OutputDebugStringA(detailStr);
 	}
 
-	void Engine::__debugPrintMouseEvent(MouseEvent* evt)
+	void GameEngine::__debugPrintMouseEvent(MouseEvent* evt)
 	{
 		SystemEventType eventType = evt->getType();
 		assert(__isMouseEvent(eventType));
@@ -221,7 +221,7 @@ namespace Engine
 		OutputDebugStringA(detailStr);
 	}
 
-	void Engine::__debugPrintKeyEvent(KeyEvent* evt)
+	void GameEngine::__debugPrintKeyEvent(KeyEvent* evt)
 	{
 		SystemEventType eventType = evt->getType();
 		assert(__isKeyEvent(eventType));
