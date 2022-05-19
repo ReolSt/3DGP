@@ -1,0 +1,277 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Engine">
+      <UniqueIdentifier>{3c16623f-17d1-4a23-80cc-d18b3f634d93}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Asset">
+      <UniqueIdentifier>{3b9a5a05-2b62-46aa-a9c2-3d4f078b9c25}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Mesh">
+      <UniqueIdentifier>{5bf46a17-34ac-47e6-bef7-e49972d83e17}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Math">
+      <UniqueIdentifier>{c9243787-c53c-4788-b75e-12924ca99180}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Core">
+      <UniqueIdentifier>{c3be50eb-cccf-48a9-926e-514a7de3af06}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Render">
+      <UniqueIdentifier>{45ed13dd-8b00-46b4-ba7a-522247ed0e36}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Component">
+      <UniqueIdentifier>{dbe5ee4a-8a01-494c-af9f-f783f4e3637c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Actor">
+      <UniqueIdentifier>{581a004a-872d-4ce0-a39f-4b303d280d04}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\System">
+      <UniqueIdentifier>{7c5c9be1-7bad-4921-bb84-63cec067e322}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Asset">
+      <UniqueIdentifier>{2ac2fa05-a809-4b2f-8f9a-ba19b72b3d66}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\DirectX">
+      <UniqueIdentifier>{dd5e5e21-412e-4cf6-b14d-885f7fe321e7}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Homework2.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\GameEngine.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\World.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Asset\AssetLoader.cpp">
+      <Filter>Engine\Asset</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Asset\DXShaderAsset.cpp">
+      <Filter>Engine\Asset</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Component\CameraComponent.cpp">
+      <Filter>Engine\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Component\Component.cpp">
+      <Filter>Engine\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Component\InputComponent.cpp">
+      <Filter>Engine\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Component\LineMeshComponent.cpp">
+      <Filter>Engine\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Component\MeshComponent.cpp">
+      <Filter>Engine\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Component\SceneComponent.cpp">
+      <Filter>Engine\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\System\SystemEvent.cpp">
+      <Filter>Engine\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\System\Win32EventDispatcher.cpp">
+      <Filter>Engine\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Actor\ActorEvent.cpp">
+      <Filter>Engine\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Actor\Actor.cpp">
+      <Filter>Engine\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Core\ObjectBase.cpp">
+      <Filter>Engine\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Math\Matrix.cpp">
+      <Filter>Engine\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Math\Plane.cpp">
+      <Filter>Engine\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Math\Quat.cpp">
+      <Filter>Engine\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Math\Rotator.cpp">
+      <Filter>Engine\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Math\Transform.cpp">
+      <Filter>Engine\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Math\Vector3.cpp">
+      <Filter>Engine\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Math\Vector4.cpp">
+      <Filter>Engine\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Mesh\LineMesh.cpp">
+      <Filter>Engine\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Render\DX12BasicRenderer.cpp">
+      <Filter>Engine\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Render\LineMeshRenderer.cpp">
+      <Filter>Engine\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Render\Renderer.cpp">
+      <Filter>Engine\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Asset\Asset.cpp">
+      <Filter>Engine\Asset</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Asset\DXVertexShaderAsset.cpp">
+      <Filter>Engine\Asset</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Homework2.rc">
+      <Filter>리소스 파일</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="small.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Homework2.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Homework2.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="framework.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\GameEngine.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\World.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Asset\AssetLoader.h">
+      <Filter>Engine\Asset</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Asset\DXShaderAsset.h">
+      <Filter>Engine\Asset</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Component\CameraComponent.h">
+      <Filter>Engine\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Component\Component.h">
+      <Filter>Engine\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Component\InputComponent.h">
+      <Filter>Engine\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Component\LineMeshComponent.h">
+      <Filter>Engine\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Component\MeshComponent.h">
+      <Filter>Engine\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Component\SceneComponent.h">
+      <Filter>Engine\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\System\SystemEvent.h">
+      <Filter>Engine\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\System\Win32EventDispatcher.h">
+      <Filter>Engine\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Actor\Actor.h">
+      <Filter>Engine\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Actor\ActorEvent.h">
+      <Filter>Engine\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Core\ObjectBase.h">
+      <Filter>Engine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Core\Rect.h">
+      <Filter>Engine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Core\Singleton.h">
+      <Filter>Engine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Core\Types.h">
+      <Filter>Engine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Core\UUIDGenerator.h">
+      <Filter>Engine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Core\Event.h">
+      <Filter>Engine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Math\Matrix.h">
+      <Filter>Engine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Math\Plane.h">
+      <Filter>Engine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Math\Quat.h">
+      <Filter>Engine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Math\Rotator.h">
+      <Filter>Engine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Math\Transform.h">
+      <Filter>Engine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Math\Vector3.h">
+      <Filter>Engine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Math\Vector4.h">
+      <Filter>Engine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Math\Math.h">
+      <Filter>Engine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Math\MathCommon.h">
+      <Filter>Engine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Mesh\LineMesh.h">
+      <Filter>Engine\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Render\DX12BasicRenderer.h">
+      <Filter>Engine\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Render\LineMeshRenderer.h">
+      <Filter>Engine\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Render\Renderer.h">
+      <Filter>Engine\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Render\Viewport.h">
+      <Filter>Engine\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\DirectX\d3dx12.h">
+      <Filter>Engine\DirectX</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Asset\Asset.h">
+      <Filter>Engine\Asset</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Asset\DXVertexShaderAsset.h">
+      <Filter>Engine\Asset</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

@@ -1,8 +1,8 @@
 #include "Math.h"
 
-#include "SceneComponent.h"
-#include "Actor.h"
-#include "Math.h"
+#include "Component/SceneComponent.h"
+#include "Actor/Actor.h"
+#include "Math/Math.h"
 
 #include <windows.h>
 
