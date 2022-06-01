@@ -4,6 +4,8 @@
 #include "Component/Component.h"
 #include "Component/SceneComponent.h"
 
+#include "debug.h"
+
 // ----------------------------------------------------------------------
 // Constructor, Destructor
 // ----------------------------------------------------------------------
@@ -249,7 +251,7 @@ namespace Engine
 			String id = pair.first;
 			Actor* child = pair.second;
 
-			assert(child != nullptr);
+			VERIFY(child != nullptr);
 
 			delete(child);
 		}
@@ -259,7 +261,7 @@ namespace Engine
 
 	bool Actor::isOwner(Actor* actor)
 	{
-		assert(actor != nullptr);
+		VERIFY(actor != nullptr);
 
 		auto owner = getOwner();
 		if (owner == nullptr)
@@ -272,14 +274,14 @@ namespace Engine
 
 	bool Actor::isChild(Actor* actor)
 	{
-		assert(actor != nullptr);
+		VERIFY(actor != nullptr);
 
 		return getChildById(actor->getId()) != nullptr;
 	}
 
 	bool Actor::isChildComponent(Component* component)
 	{
-		assert(component != nullptr);
+		VERIFY(component != nullptr);
 
 		return getComponentById(component->getId());
 	}
@@ -455,7 +457,7 @@ namespace Engine
 			String id = pair.first;
 			Component* component = pair.second;
 
-			assert(component != nullptr);
+			VERIFY(component != nullptr);
 
 			delete component;
 		}

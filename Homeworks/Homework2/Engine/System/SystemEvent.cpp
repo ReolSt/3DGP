@@ -1,6 +1,5 @@
 #include "SystemEvent.h"
 
-#include <cassert>
 #include <string>
 #include <unordered_map>
 
@@ -372,24 +371,24 @@ namespace Engine
 	WindowEvent::WindowEvent(SystemEventType eventType, int x, int y, int width, int height)
 		: SystemEvent(eventType), m_x(x), m_y(y), m_width(width), m_height(height)
 	{
-		assert(__isWindowEvent(eventType));
+		VERIFY(__isWindowEvent(eventType));
 	}
 
 
 	KeyEvent::KeyEvent(SystemEventType eventType, KeyCode keyCode)
 		: SystemEvent(eventType), m_keyCode(keyCode)
 	{
-		assert(__isKeyEvent(eventType) || eventType == SystemEventType::None);
-		assert(__isKeyCode(keyCode) || keyCode == KeyCode::None);
+		VERIFY(__isKeyEvent(eventType) || eventType == SystemEventType::None);
+		VERIFY(__isKeyCode(keyCode) || keyCode == KeyCode::None);
 	}
 
 	MouseEvent::MouseEvent(SystemEventType eventType, const Array<KeyCode>& buttons, int x, int y, int wheelDelta)
 		: SystemEvent(eventType), m_buttons(buttons), m_x(x), m_y(y), m_wheelDelta(wheelDelta)
 	{
-		assert(__isMouseEvent(eventType) || eventType == SystemEventType::None);
+		VERIFY(__isMouseEvent(eventType) || eventType == SystemEventType::None);
 		for (KeyCode button : buttons)
 		{
-			assert(__isMouseButtonCode(button) || button == KeyCode::None);
+			VERIFY(__isMouseButtonCode(button) || button == KeyCode::None);
 		}		
 	}
 }

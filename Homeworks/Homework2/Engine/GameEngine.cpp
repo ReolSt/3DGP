@@ -34,7 +34,12 @@ namespace Engine
 
 	void GameEngine::SetWorld(World* world)
 	{
-		GetInstance()->SetWorld(world);
+		GetInstance()->setWorld(world);
+	}
+
+	void GameEngine::SetDeltaTime(Float deltaTime)
+	{
+		GetInstance()->setDeltaTime(deltaTime);
 	}
 
 	// ----------------------------------------------------------------------
@@ -48,8 +53,13 @@ namespace Engine
 
 	Array<Renderer*> GameEngine::getRenderers()
 	{
-		auto instance = GameEngine::GetInstance();
-		return instance->getRenderers();
+		Array<Renderer*> renderers;
+		for (const auto& pair : m_renderers)
+		{
+			renderers.push_back(pair.second);
+		}
+
+		return renderers;
 	}
 
 	Int64 GameEngine::getRendererCount() const
@@ -203,7 +213,7 @@ namespace Engine
 	void GameEngine::__debugPrintWindowEvent(WindowEvent* evt)
 	{
 		SystemEventType eventType = evt->getType();
-		assert(__isWindowEvent(eventType));
+		VERIFY(__isWindowEvent(eventType));
 
 		char debugStr[100];
 		snprintf(debugStr, 100, "EventType: %s, ", GetStringFromEventType(eventType).c_str());
@@ -219,7 +229,7 @@ namespace Engine
 	void GameEngine::__debugPrintMouseEvent(MouseEvent* evt)
 	{
 		SystemEventType eventType = evt->getType();
-		assert(__isMouseEvent(eventType));
+		VERIFY(__isMouseEvent(eventType));
 
 		char debugStr[100];
 		snprintf(debugStr, 100, "EventType: %s, ", GetStringFromEventType(eventType).c_str());
@@ -242,7 +252,7 @@ namespace Engine
 	void GameEngine::__debugPrintKeyEvent(KeyEvent* evt)
 	{
 		SystemEventType eventType = evt->getType();
-		assert(__isKeyEvent(eventType));
+		VERIFY(__isKeyEvent(eventType));
 
 		char debugStr[100];
 		snprintf(debugStr, 100, "EventType: %s, ", GetStringFromEventType(eventType).c_str());

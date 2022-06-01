@@ -2,6 +2,8 @@
 #include "Actor/Actor.h"
 #include "World.h"
 
+#include "debug.h"
+
 namespace Engine
 {
 	// ----------------------------------------------------------------------
@@ -169,7 +171,7 @@ namespace Engine
 
 	void Component::addComponent(Component* component)
 	{
-		assert(component != nullptr);
+		VERIFY(component != nullptr);
 
 		if (isChildComponent(component))
 		{
@@ -186,7 +188,7 @@ namespace Engine
 
 	void Component::removeComponent(Component* component)
 	{
-		assert(component != nullptr);
+		VERIFY(component != nullptr);
 
 		if (!isChildComponent(component))
 		{
@@ -220,7 +222,7 @@ namespace Engine
 			String id = pair.first;
 			Component* component = pair.second;
 
-			assert(component != nullptr);
+			VERIFY(component != nullptr);
 
 			delete(component);
 		}
@@ -230,14 +232,14 @@ namespace Engine
 
 	bool Component::isChildComponent(Component* component)
 	{
-		assert(component != nullptr);
+		VERIFY(component != nullptr);
 
 		return getComponentById(component->getId()) != nullptr;
 	}
 
 	bool Component::isParentComponent(Component* component)
 	{
-		assert(component != nullptr);
+		VERIFY(component != nullptr);
 
 		auto parentComponent = getParentComponent();
 		if (parentComponent == nullptr)
@@ -250,7 +252,7 @@ namespace Engine
 
 	bool Component::isOwner(Actor* actor)
 	{
-		assert(actor != nullptr);
+		VERIFY(actor != nullptr);
 
 		auto owner = getOwner();
 		if (owner == nullptr)

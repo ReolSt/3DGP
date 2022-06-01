@@ -11,14 +11,14 @@ namespace Engine
 		static std::shared_ptr<T> _instance;
 
 	public:
-		static std::shared_ptr<T> GetInstance()
+		static T* GetInstance()
 		{
 			if (_instance == nullptr)
 			{
 				_instance = std::make_shared<T>();
 			}
 
-			return _instance;
+			return _instance.get();
 		}
 
 		static void SetInstance(std::shared_ptr<T> instance)

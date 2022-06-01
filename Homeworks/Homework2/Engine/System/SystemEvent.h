@@ -2,7 +2,7 @@
 
 #include <windows.h>
 
-#include <cassert>
+#include "debug.h"
 #include <string>
 #include <vector>
 #include <functional>
@@ -257,7 +257,7 @@ namespace Engine
 
 		void setKeyCode(KeyCode keyCode)
 		{
-			assert(__isKeyCode(keyCode));
+			VERIFY(__isKeyCode(keyCode));
 
 			m_keyCode = keyCode;
 		}
@@ -292,7 +292,7 @@ namespace Engine
 		{
 			for (KeyCode button : buttons)
 			{
-				assert(__isMouseButtonCode(button));
+				VERIFY(__isMouseButtonCode(button));
 			}
 			
 			m_buttons = buttons;

@@ -29,7 +29,7 @@ namespace Engine
 		Math::Transform getWorldTransform();
 		Math::Transform getRelativeTransform();
 
-		Math::Vector3 getWorldTranlation();
+		Math::Vector3 getWorldTranslation();
 		Math::Vector3 getRelativeTranslation();
 
 		Math::Quat getWorldRotation();

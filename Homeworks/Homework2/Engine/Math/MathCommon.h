@@ -13,6 +13,8 @@ using namespace DirectX::PackedVector;
 #include <algorithm>
 #include <ctime>
 
+#include "debug.h"
+
 #define VECTOR_TOLERANCE 1e-6
 #define MATRIX_TOLERANCE 1e-6
 #define PLANE_TOLERANCE 1e-6

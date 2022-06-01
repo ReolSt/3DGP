@@ -125,7 +125,7 @@ namespace Engine
 
     void World::addActor(Actor* actor)
     {
-        assert(actor != nullptr);
+        VERIFY(actor != nullptr);
 
         String actorId = actor->getId();
         m_actors[actorId] = actor;
@@ -146,7 +146,7 @@ namespace Engine
 
     void World::removeActor(Actor* actor)
     {
-        assert(actor != nullptr);
+        VERIFY(actor != nullptr);
 
         String actorId = actor->getId();
         m_actors.erase(actorId);
@@ -283,7 +283,7 @@ namespace Engine
 
     void World::registerComponent(Component* component)
     {
-        assert(component != nullptr);
+        VERIFY(component != nullptr);
 
         String componentId = component->getId();
         m_registeredComponents[componentId] = component;
@@ -299,7 +299,7 @@ namespace Engine
 
     void World::unRegisterComponent(Component* component)
     {
-        assert(component != nullptr);
+        VERIFY(component != nullptr);
 
         String componentId = component->getId();
         m_registeredComponents.erase(componentId);

@@ -28,7 +28,7 @@ namespace Engine
         Math::Transform worldTransform;
         worldTransform.setScale(getWorldScale());
         worldTransform.setRotation(getWorldRotation());
-        worldTransform.setTranslation(getWorldTranlation());
+        worldTransform.setTranslation(getWorldTranslation());
 
         return worldTransform;
     }
@@ -38,36 +38,30 @@ namespace Engine
         return m_relativeTransform;
     }
 
-    Vector3 SceneComponent::getWorldTranlation()
+    Vector3 SceneComponent::getWorldTranslation()
     {
-        auto parent = getParentComponent();
-        if (parent == nullptr)
-        {
-            return getRelativeTranslation();
-        }
+        auto relativeTranslation = getRelativeTranslation();
 
-        auto parentWorldTransform = dynamic_cast<SceneComponent*>(parent)->getWorldTransform();
+        auto parent = dynamic_cast<SceneComponent*>(getParentComponent());
+        if (parent != nullptr)
+        {
+            return Vector3(parent->getWorldTransform().toMatrix() * Vector4(relativeTranslation, 1.0f));
+        }
 
         auto owner = getOwner();
-        auto rootTranslation = Vector3(parentWorldTransform.toMatrix() * Vector4(getRelativeTranslation(), 1.0f));
-        if (owner == nullptr)
+        auto ownerParent = owner->getOwner();
+        if (owner == nullptr || ownerParent == nullptr)
         {
-            return rootTranslation;
-        }
-
-        auto ownerParent = owner->getOwner();        
-        if (ownerParent == nullptr)
-        {
-            return rootTranslation;
+            return relativeTranslation;
         }
 
         auto ownerParentSceneRoot = dynamic_cast<SceneComponent*>(ownerParent->getFirstComponentByTypeId(GetTypeId(SceneComponent)));
         if (ownerParentSceneRoot == nullptr)
         {
-            return rootTranslation;
+            return relativeTranslation;
         }
-
-        return Vector3(ownerParentSceneRoot->getWorldTransform().toMatrix() * Vector4(rootTranslation, 1.0f));
+        
+        return Vector3(ownerParentSceneRoot->getWorldTransform().toMatrix() * Vector4(relativeTranslation, 1.0f));
     }
 
     Vector3 SceneComponent::getRelativeTranslation()
@@ -77,32 +71,28 @@ namespace Engine
 
     Quat SceneComponent::getWorldRotation()
     {
-        auto parent = getParentComponent();
-        if (parent == nullptr)
+        auto relativeRotation = getRelativeRotation();
+
+        auto parent = dynamic_cast<SceneComponent*>(getParentComponent());
+        if (parent != nullptr)
         {
-            return getRelativeRotation();
+            return parent->getWorldRotation() * relativeRotation;
         }
 
         auto owner = getOwner();
-        auto rootRotation = dynamic_cast<SceneComponent*>(parent)->getWorldRotation() * getRelativeRotation();
-        if (owner == nullptr)
-        {
-            return rootRotation;
-        }
-
         auto ownerParent = owner->getOwner();
-        if (ownerParent == nullptr)
+        if (owner == nullptr || ownerParent == nullptr)
         {
-            return rootRotation;
+            return relativeRotation;
         }
 
         auto ownerParentSceneRoot = dynamic_cast<SceneComponent*>(ownerParent->getFirstComponentByTypeId(GetTypeId(SceneComponent)));
         if (ownerParentSceneRoot == nullptr)
         {
-            return rootRotation;
+            return relativeRotation;
         }
 
-        return dynamic_cast<SceneComponent*>(parent)->getWorldRotation() * rootRotation;
+        return ownerParentSceneRoot->getWorldRotation() * relativeRotation;
     }
 
     Quat SceneComponent::getRelativeRotation()
@@ -112,33 +102,28 @@ namespace Engine
 
     Vector3 SceneComponent::getWorldScale()
     {
+        auto relativeScale = getRelativeScale();
 
-        auto parent = getParentComponent();
-        if (parent == nullptr)
+        auto parent = dynamic_cast<SceneComponent*>(getParentComponent());
+        if (parent != nullptr)
         {
-            return getRelativeScale();
+            return parent->getWorldScale() * relativeScale;
         }
 
         auto owner = getOwner();
-        auto rootScale = dynamic_cast<SceneComponent*>(parent)->getWorldScale() * getRelativeScale();
-        if (owner == nullptr)
-        {
-            return rootScale;
-        }
-
         auto ownerParent = owner->getOwner();
-        if (ownerParent == nullptr)
+        if (owner == nullptr || ownerParent == nullptr)
         {
-            return rootScale;
+            return relativeScale;
         }
 
         auto ownerParentSceneRoot = dynamic_cast<SceneComponent*>(ownerParent->getFirstComponentByTypeId(GetTypeId(SceneComponent)));
         if (ownerParentSceneRoot == nullptr)
         {
-            return rootScale;
+            return relativeScale;
         }
 
-        return ownerParentSceneRoot->getWorldScale() * rootScale;
+        return ownerParentSceneRoot->getWorldScale() * relativeScale;
     }
 
     Vector3 SceneComponent::getRelativeScale()
@@ -164,12 +149,29 @@ namespace Engine
 
     void SceneComponent::setWorldTranslation(const Vector3& newTranslation)
     {
-        auto parent = getParentComponent();
-        if (parent == nullptr)
+        auto parent = dynamic_cast<SceneComponent*>(getParentComponent());
+        if (parent != nullptr)
+        {
+            setRelativeTranslation(Vector3(parent->getWorldTransform().toMatrix().inverse() * Vector4(newTranslation, 1.0f)));
+            return;
+        }
+
+        auto owner = getOwner();
+        auto ownerParent = owner->getOwner();
+        if (owner == nullptr || ownerParent == nullptr)
         {
             setRelativeTranslation(newTranslation);
             return;
         }
+
+        auto ownerParentSceneRoot = dynamic_cast<SceneComponent*>(ownerParent->getFirstComponentByTypeId(GetTypeId(SceneComponent)));
+        if (ownerParentSceneRoot == nullptr)
+        {
+            setRelativeTranslation(newTranslation);
+            return;
+        }
+
+        setRelativeTranslation(Vector3(ownerParentSceneRoot->getWorldTransform().toMatrix().inverse() * Vector4(newTranslation, 1.0f)));
     }
 
     void SceneComponent::setRelativeTranslation(const Vector3& newTranslation)
@@ -179,12 +181,29 @@ namespace Engine
 
     void SceneComponent::setWorldRotation(const Quat& newRotation)
     {
-        auto parent = getParentComponent();
-        if (parent == nullptr)
+        auto parent = dynamic_cast<SceneComponent*>(getParentComponent());
+        if (parent != nullptr)
+        {
+            setRelativeRotation(parent->getWorldRotation().inverse() * newRotation);
+            return;
+        }
+
+        auto owner = getOwner();
+        auto ownerParent = owner->getOwner();
+        if (owner == nullptr || ownerParent == nullptr)
         {
             setRelativeRotation(newRotation);
             return;
         }
+
+        auto ownerParentSceneRoot = dynamic_cast<SceneComponent*>(ownerParent->getFirstComponentByTypeId(GetTypeId(SceneComponent)));
+        if (ownerParentSceneRoot == nullptr)
+        {
+            setRelativeRotation(newRotation);
+            return;
+        }
+
+        setRelativeRotation(ownerParentSceneRoot->getWorldRotation() * newRotation);
     }
 
     void SceneComponent::setRelativeRotation(const Quat& newRotation)
@@ -194,12 +213,29 @@ namespace Engine
 
     void SceneComponent::setWorldScale(const Vector3& newScale)
     {
-        auto parent = getParentComponent();
-        if (parent == nullptr)
+        auto parent = dynamic_cast<SceneComponent*>(getParentComponent());
+        if (parent != nullptr)
+        {
+            setRelativeScale(parent->getWorldTransform().getSafeScaleReciprocal() * newScale);
+            return;
+        }
+
+        auto owner = getOwner();
+        auto ownerParent = owner->getOwner();
+        if (owner == nullptr || ownerParent == nullptr)
         {
             setRelativeScale(newScale);
             return;
         }
+
+        auto ownerParentSceneRoot = dynamic_cast<SceneComponent*>(ownerParent->getFirstComponentByTypeId(GetTypeId(SceneComponent)));
+        if (ownerParentSceneRoot == nullptr)
+        {
+            setRelativeScale(newScale);
+            return;
+        }
+
+        setRelativeScale(ownerParentSceneRoot->getWorldTransform().getSafeScaleReciprocal() * newScale);
     }
 
     void SceneComponent::setRelativeScale(const Vector3& newScale)
@@ -213,7 +249,7 @@ namespace Engine
 
     void SceneComponent::addWorldTranslation(const Vector3& deltaTranslation)
     {
-        setWorldTranslation(getWorldTranlation() + deltaTranslation);
+        setWorldTranslation(getWorldTranslation() + deltaTranslation);
     }
 
     void SceneComponent::addRelativeTranslation(const Vector3& deltaTranslation)

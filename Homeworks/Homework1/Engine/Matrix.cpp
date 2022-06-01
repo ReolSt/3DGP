@@ -311,7 +311,7 @@ namespace Engine
 			return dxResult.x;
 		}
 
-		Matrix Matrix::Inverse() const
+		Matrix Matrix::inverse() const
 		{
 			XMFLOAT4X4 dxResult;
 			xmStore(dxResult, XMMatrixInverse(NULL, xmLoad()));

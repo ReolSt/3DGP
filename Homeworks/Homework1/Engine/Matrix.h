@@ -81,7 +81,7 @@ namespace Engine
 			bool isNaN() const;
 
 			float determinant() const;
-			Matrix Inverse() const;
+			Matrix inverse() const;
 			Matrix transpose() const;
 			Matrix translate(const Vector3& translation) const;
 

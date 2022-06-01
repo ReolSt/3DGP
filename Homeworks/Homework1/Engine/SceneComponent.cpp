@@ -28,7 +28,7 @@ namespace Engine
         Math::Transform worldTransform;
         worldTransform.setScale(getWorldScale());
         worldTransform.setRotation(getWorldRotation());
-        worldTransform.setTranslation(getWorldTranlation());
+        worldTransform.setTranslation(getWorldTranslation());
 
         return worldTransform;
     }
@@ -38,7 +38,7 @@ namespace Engine
         return m_relativeTransform;
     }
 
-    Vector3 SceneComponent::getWorldTranlation()
+    Vector3 SceneComponent::getWorldTranslation()
     {
         auto parent = getParentComponent();
         if (parent == nullptr)
@@ -213,7 +213,7 @@ namespace Engine
 
     void SceneComponent::addWorldTranslation(const Vector3& deltaTranslation)
     {
-        setWorldTranslation(getWorldTranlation() + deltaTranslation);
+        setWorldTranslation(getWorldTranslation() + deltaTranslation);
     }
 
     void SceneComponent::addRelativeTranslation(const Vector3& deltaTranslation)

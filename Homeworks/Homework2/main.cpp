@@ -5,7 +5,10 @@
 #include "Homework2.h"
 
 #include "Engine/GameEngine.h"
-#include "Engine/Render/DX12BasicRenderer.h"
+#include "Engine/Render/DX12Renderer.h"
+#include "Engine/System/Win32EventDispatcher.h"
+
+#include "Homework2World.h"
 
 #include <chrono>
 
@@ -48,6 +51,9 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     MSG msg;
 
     auto engine = Engine::GameEngine::GetInstance();
+
+    auto world = new Homework2World();
+    engine->setWorld(world);
 
     auto lastTime = std::chrono::system_clock::now();
     auto currentTime = lastTime;
@@ -132,7 +138,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
         return FALSE;
     }
 
-    auto renderer = new Engine::DX12BasicRenderer();
+    auto renderer = Engine::DX12Renderer::GetInstance();
     renderer->initialize(hInstance, hMainWnd);
 
     auto engine = Engine::GameEngine::GetInstance();
@@ -156,6 +162,8 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 //
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
+    Engine::Win32EventDispatcher::dispatchEvent(hWnd, message, wParam, lParam);
+
     switch (message)
     {
     case WM_COMMAND:
@@ -189,6 +197,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     default:
         return DefWindowProc(hWnd, message, wParam, lParam);
     }
+
     return 0;
 }
 

@@ -374,7 +374,7 @@ namespace Engine
 
 		float Quat::operator[](int index)
 		{
-			assert(index >= 0 && index <= 3);
+			VERIFY(index >= 0 && index <= 3);
 
 			float v[4] = { m_dxVector.x, m_dxVector.y, m_dxVector.z, m_dxVector.w };
 			return v[index];
@@ -382,7 +382,7 @@ namespace Engine
 
 		float Quat::operator[](int index) const
 		{
-			assert(index >= 0 && index <= 3);
+			VERIFY(index >= 0 && index <= 3);
 
 			float v[4] = { m_dxVector.x, m_dxVector.y, m_dxVector.z, m_dxVector.w };
 			return v[index];

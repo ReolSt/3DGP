@@ -11,7 +11,7 @@ namespace Engine
 
 		Viewport() { }
 
-		Viewport(Int x, Int y, Int width, Int height)
+		Viewport(Float x, Float y, Float width, Float height)
 		{
 			m_x = x;
 			m_y = y;
@@ -24,25 +24,25 @@ namespace Engine
 		// Getter, Setter
 		// ----------------------------------------------------------------------
 
-		Int getX() const { return m_x; }
-		Int getY() const { return m_y; }
-		Int getWidth() const { return m_width; }
-		Int getHeight() const { return m_height; }
+		Float getX() const { return m_x; }
+		Float getY() const { return m_y; }
+		Float getWidth() const { return m_width; }
+		Float getHeight() const { return m_height; }
 
-		void setX(Int x) { m_x = x; }
-		void setY(Int y) { m_y = y; }
-		void setWidth(Int width) { m_width = width; }
-		void setHeight(Int height) { m_height = height; }
+		void setX(Float x) { m_x = x; }
+		void setY(Float y) { m_y = y; }
+		void setWidth(Float width) { m_width = width; }
+		void setHeight(Float height) { m_height = height; }
 
 	private:
 		// ----------------------------------------------------------------------
 		// Private Member Variable
 		// ----------------------------------------------------------------------
 
-		Int m_x = 0;
-		Int m_y = 0;
-		Int m_width = 1;
-		Int m_height = 1;
+		Float m_x = 0.0f;
+		Float m_y = 0.0f;
+		Float m_width = 1.0f;
+		Float m_height = 1.0f;
 	};
 };
 

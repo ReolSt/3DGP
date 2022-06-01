@@ -47,7 +47,7 @@ namespace Engine
         void setIdnex(UInt64 arrayIndex, UInt64 index);
 
         void addVertex(UInt64 arrayIndex, const Math::Vector3& vertex);
-        void addVertexColor(UInt64 arrayIndex, const Math::Vector3& vertexColor);
+        void insertVertexColor(UInt64 arrayIndex, const Math::Vector3& vertexColor);
         void addIndex(UInt64 arrayIndex, UInt64 index);
 
         void removeVertex(UInt64 arrayIndex);

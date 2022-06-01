@@ -6,6 +6,8 @@
 #include "Component/LineMeshComponent.h"
 #include "Component/CameraComponent.h"
 
+#include "debug.h"
+
 
 namespace Engine
 {
@@ -110,8 +112,8 @@ namespace Engine
 				auto& vertexColorData = mesh->getVertexColorData();
 				auto& indices = mesh->getIndices();
 
-				assert(vertexData.size() == vertexColorData.size());
-				assert(indices.size() % 3 == 0);
+				VERIFY(vertexData.size() == vertexColorData.size());
+				VERIFY(indices.size() % 3 == 0);
 
 				auto modelToWorld = meshWorldTransform.toMatrix();
 				auto modelToScreen = modelToWorld * view * projection;

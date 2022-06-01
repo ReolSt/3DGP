@@ -256,14 +256,14 @@ namespace Engine
 
 		float* Matrix::operator[](int index)
 		{
-			assert(index >= 0 && index <= 3);
+			VERIFY(index >= 0 && index <= 3);
 
 			return m_dxMatrix.m[index];
 		}
 
 		const float* Matrix::operator[](int index) const
 		{
-			assert(index >= 0 && index <= 3);
+			VERIFY(index >= 0 && index <= 3);
 
 			return m_dxMatrix.m[index];
 		}
@@ -311,7 +311,7 @@ namespace Engine
 			return dxResult.x;
 		}
 
-		Matrix Matrix::Inverse() const
+		Matrix Matrix::inverse() const
 		{
 			XMFLOAT4X4 dxResult;
 			xmStore(dxResult, XMMatrixInverse(NULL, xmLoad()));

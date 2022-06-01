@@ -19,7 +19,7 @@ namespace Engine
 
 		Rotator::Rotator(float yaw, float pitch, float roll)
 		{
-			set(yaw, pitch, roll);
+			set(pitch, yaw, roll);
 		}
 
 		Rotator::Rotator(const Rotator& rotator)
@@ -53,12 +53,12 @@ namespace Engine
 
 		float Rotator::getYaw() const
 		{
-			return m_dxVector.x;
+			return m_dxVector.y;
 		}
 
 		float Rotator::getPitch() const
 		{
-			return m_dxVector.y;
+			return m_dxVector.x;
 		}
 
 		float Rotator::getRoll() const
@@ -68,12 +68,12 @@ namespace Engine
 
 		void Rotator::setYaw(float yaw)
 		{
-			m_dxVector.x = yaw;
+			m_dxVector.y = yaw;
 		}
 
 		void Rotator::setPitch(float pitch)
 		{
-			m_dxVector.y = pitch;
+			m_dxVector.x = pitch;
 		}
 
 		void Rotator::setRoll(float roll)
@@ -288,7 +288,7 @@ namespace Engine
 
 		float Rotator::operator[](int index)
 		{
-			assert(index >= 0 && index <= 2);
+			VERIFY(index >= 0 && index <= 2);
 
 			float v[3] = { m_dxVector.x, m_dxVector.y, m_dxVector.z };
 			return v[index];
@@ -296,7 +296,7 @@ namespace Engine
 
 		float Rotator::operator[](int index) const
 		{
-			assert(index >= 0 && index <= 2);
+			VERIFY(index >= 0 && index <= 2);
 			float v[3] = { m_dxVector.x, m_dxVector.y, m_dxVector.z };
 			return v[index];
 		}

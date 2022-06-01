@@ -35,6 +35,11 @@ namespace Engine
 		return m_far;
 	}
 
+	float CameraComponent::getAspectRatio()
+	{
+		return m_aspectRatio;
+	}
+
 	void CameraComponent::setViewport(const Viewport& viewport)
 	{
 		m_viewport = viewport;
@@ -45,20 +50,25 @@ namespace Engine
 		m_fov = fov;
 	}
 
-	void CameraComponent::setNear(float near)
+	void CameraComponent::setNear(float nearPlane)
 	{
-		m_near = near;
+		m_near = nearPlane;
 	}
 
-	void CameraComponent::setFar(float far)
+	void CameraComponent::setFar(float farPlane)
 	{
-		m_far = far;
+		m_far = farPlane;
+	}
+
+	void CameraComponent::setAspectRatio(float aspectRatio)
+	{
+		m_aspectRatio = aspectRatio;
 	}
 
 	Matrix CameraComponent::getOrthographicProjectionMatrix()
 	{
 		Matrix projection;
-		projection.xmStore(XMMatrixOrthographicLH((float)m_viewport.getWidth() / (float)m_viewport.getHeight(), 1.0f, m_near, m_far));
+		projection.xmStore(XMMatrixOrthographicLH(m_aspectRatio, 1.0f, m_near, m_far));
 
 		return projection;
 	}
@@ -66,17 +76,9 @@ namespace Engine
 	Matrix CameraComponent::getPerspectiveProjectionMatrix()
 	{
 		Matrix projection;
-
-		/*
-
-		projection.xmStore(
-			XMMatrixPerspectiveLH((float)m_viewport.getWidth() / (float)m_viewport.getHeight(), 1.0f, m_near, m_far));
-
-		*/
 		
 		projection.xmStore(
-			XMMatrixPerspectiveFovLH(degreeToRads(m_fov), (float)m_viewport.getWidth() / (float)m_viewport.getHeight(), m_near, m_far));
-
+			XMMatrixPerspectiveFovLH(degreeToRads(m_fov), m_aspectRatio, m_near, m_far));
 
 		return projection;
 	}

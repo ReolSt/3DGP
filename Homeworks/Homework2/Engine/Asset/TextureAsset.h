@@ -1,18 +1,26 @@
 #pragma once
 
 #include "Asset/Asset.h"
+#include "Math/Math.h"
 
 namespace Engine
 {
-	class DXShaderAsset : public Asset
+	class TextureAsset : public Asset
 	{
+		AssetDefaultMacro(TextureAsset)
+
 	public:
 		// ----------------------------------------------------------------------
 		// Constructor, Destructor
 		// ----------------------------------------------------------------------
 
-		DXShaderAsset();
-		virtual ~DXShaderAsset();
+		TextureAsset();
+		virtual ~TextureAsset();
+
+	public:
+		// ----------------------------------------------------------------------
+		// Getter, Setter
+		// ----------------------------------------------------------------------
 
 	public:
 		// ----------------------------------------------------------------------
@@ -22,6 +30,10 @@ namespace Engine
 		virtual void load(const WString& assetFilePath) override;
 		virtual void unload() override;
 
+	private:
+		// ----------------------------------------------------------------------
+		// Private Member Variable
+		// ----------------------------------------------------------------------
+
 	};
 }
-

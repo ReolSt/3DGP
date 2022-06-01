@@ -359,7 +359,7 @@ namespace Engine
 
 		float Vector3::operator[](int index)
 		{
-			assert(index >= 0 && index <= 2);
+			VERIFY(index >= 0 && index <= 2);
 
 			float v[3] = { m_dxVector.x, m_dxVector.y, m_dxVector.z };
 			return v[index];
@@ -367,7 +367,7 @@ namespace Engine
 
 		float Vector3::operator[](int index) const
 		{
-			assert(index >= 0 && index <= 2);
+			VERIFY(index >= 0 && index <= 2);
 			float v[3] = { m_dxVector.x, m_dxVector.y, m_dxVector.z };
 			return v[index];
 		}

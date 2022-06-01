@@ -1,6 +1,6 @@
 #pragma once
 
-#include "SceneComponent.h"
+#include "Component/SceneComponent.h"
 
 namespace Engine
 {
@@ -11,6 +11,6 @@ namespace Engine
 		// Constructor, Destructor
 		// ----------------------------------------------------------------------
 
-		MeshComponent(Actor* owner, const String& name);
+		MeshComponent(__ComponentDefaultParamsDef);
 	};
 }

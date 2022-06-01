@@ -93,7 +93,7 @@ namespace Engine
         m_vertexData.insert(m_vertexColorData.begin() + arrayIndex, vertex);
     }
 
-    void LineMesh::addVertexColor(UInt64 arrayIndex, const Vector3& vertexColor)
+    void LineMesh::insertVertexColor(UInt64 arrayIndex, const Vector3& vertexColor)
     {
         m_vertexColorData.insert(m_vertexColorData.begin() + arrayIndex, vertexColor);
     }

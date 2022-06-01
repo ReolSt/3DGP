@@ -1,4 +1,6 @@
-#include "DXShaderAsset.h"
+#include "DX12ShaderAsset.h"
+
+#include "Asset/AssetStorage.h"
 
 namespace Engine
 {
@@ -6,28 +8,28 @@ namespace Engine
 	// Constructor, Destructor
 	// ----------------------------------------------------------------------
 
-	DXShaderAsset::DXShaderAsset()
+	DX12ShaderAsset::DX12ShaderAsset()
 	{
 
 	}
 
-	DXShaderAsset::~DXShaderAsset()
+	DX12ShaderAsset::~DX12ShaderAsset()
 	{
-
+		
 	}
 
 	// ----------------------------------------------------------------------
 	// Public Member Method
 	// ----------------------------------------------------------------------
 
-	void DXShaderAsset::load(const WString& assetFilePath)
+	void DX12ShaderAsset::load(const WString& assetFilePath)
 	{
-		
+		Asset::load(assetFilePath);
 	}
 
-	void DXShaderAsset::unload()
+	void DX12ShaderAsset::unload()
 	{
-
+		Asset::unload();
 	}
 }
 

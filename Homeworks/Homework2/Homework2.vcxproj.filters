@@ -46,9 +46,12 @@
     <Filter Include="Engine\DirectX">
       <UniqueIdentifier>{dd5e5e21-412e-4cf6-b14d-885f7fe321e7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Shader">
+      <UniqueIdentifier>{f184bc25-dac3-4f60-a374-6c166cb59cdb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Homework2.cpp">
+    <ClCompile Include="main.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Engine\GameEngine.cpp">
@@ -57,10 +60,7 @@
     <ClCompile Include="Engine\World.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Asset\AssetLoader.cpp">
-      <Filter>Engine\Asset</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Asset\DXShaderAsset.cpp">
+    <ClCompile Include="Engine\Asset\AssetStorage.cpp">
       <Filter>Engine\Asset</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Component\CameraComponent.cpp">
@@ -132,7 +132,67 @@
     <ClCompile Include="Engine\Asset\Asset.cpp">
       <Filter>Engine\Asset</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Asset\DXVertexShaderAsset.cpp">
+    <ClCompile Include="Engine\Asset\DX12VertexShaderAsset.cpp">
+      <Filter>Engine\Asset</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Asset\DX12PixelShaderAsset.cpp">
+      <Filter>Engine\Asset</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Shader\DX12ShaderInputLayout.cpp">
+      <Filter>Engine\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Mesh\DX12BasicMesh.cpp">
+      <Filter>Engine\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Asset\DX12ShaderAsset.cpp">
+      <Filter>Engine\Asset</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Component\DX12BasicMeshComponent.cpp">
+      <Filter>Engine\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="Homework2World.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshActor.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Mesh\Mesh.cpp">
+      <Filter>Engine\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="SphereMesh.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectX\DX12Helpers.cpp">
+      <Filter>Engine\DirectX</Filter>
+    </ClCompile>
+    <ClCompile Include="ObserverActor.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Shader\DX12Shader.cpp">
+      <Filter>Engine\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Mesh\DX12Mesh.cpp">
+      <Filter>Engine\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Component\DX12MeshComponent.cpp">
+      <Filter>Engine\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Render\DX12Renderer.cpp">
+      <Filter>Engine\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Asset\MeshAsset.cpp">
+      <Filter>Engine\Asset</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Math\Vector2.cpp">
+      <Filter>Engine\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="CarActor.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Shader\Material.cpp">
+      <Filter>Engine\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Asset\TextureAsset.cpp">
       <Filter>Engine\Asset</Filter>
     </ClCompile>
   </ItemGroup>
@@ -168,10 +228,7 @@
     <ClInclude Include="Engine\World.h">
       <Filter>Engine</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Asset\AssetLoader.h">
-      <Filter>Engine\Asset</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Asset\DXShaderAsset.h">
+    <ClInclude Include="Engine\Asset\AssetStorage.h">
       <Filter>Engine\Asset</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Component\CameraComponent.h">
@@ -270,8 +327,87 @@
     <ClInclude Include="Engine\Asset\Asset.h">
       <Filter>Engine\Asset</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Asset\DXVertexShaderAsset.h">
+    <ClInclude Include="Engine\Asset\DX12VertexShaderAsset.h">
       <Filter>Engine\Asset</Filter>
     </ClInclude>
+    <ClInclude Include="Engine\Asset\DX12PixelShaderAsset.h">
+      <Filter>Engine\Asset</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Shader\DX12ShaderInputLayout.h">
+      <Filter>Engine\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Mesh\Mesh.h">
+      <Filter>Engine\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Mesh\DX12BasicMesh.h">
+      <Filter>Engine\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Asset\DX12ShaderAsset.h">
+      <Filter>Engine\Asset</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Shader\DX12Shader.h">
+      <Filter>Engine\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Component\DX12BasicMeshComponent.h">
+      <Filter>Engine\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Homework2World.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshActor.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="SphereMesh.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\DirectX\DX12Helpers.h">
+      <Filter>Engine\DirectX</Filter>
+    </ClInclude>
+    <ClInclude Include="ObserverActor.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Mesh\DX12Mesh.h">
+      <Filter>Engine\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Component\DX12MeshComponent.h">
+      <Filter>Engine\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Render\DX12Renderer.h">
+      <Filter>Engine\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Asset\MeshAsset.h">
+      <Filter>Engine\Asset</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Math\Vector2.h">
+      <Filter>Engine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="CarActor.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Shader\Material.h">
+      <Filter>Engine\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Asset\TextureAsset.h">
+      <Filter>Engine\Asset</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\debug.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="Assets\VertexShader.hlsl">
+      <Filter>Asset</Filter>
+    </FxCompile>
+    <FxCompile Include="Assets\PixelShader.hlsl">
+      <Filter>Asset</Filter>
+    </FxCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\ConstantBuffers.hlsl">
+      <Filter>Asset</Filter>
+    </None>
+    <None Include="Assets\Common.hlsl">
+      <Filter>Asset</Filter>
+    </None>
   </ItemGroup>
 </Project>
